@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>For Rekha — five small worlds</title>
+<meta name="description" content="Five hand-made paths for Rekha. A letter, a film, a small world, a night walk, and a heart of light.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0e14; --ink2:#141828; --plum:#2a2340;
+  --paper:#f4ede3; --rose:#e89cae; --rose-deep:#9a4a62; --rose-smoke:#c98a9b;
+  --gold:#e8c87a; --amber:#f2c6a0; --leaf:#7ba889; --ash:#8f96ab;
+  --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.10);
+  --serif:"Fraunces",Georgia,serif; --sans:"Manrope",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--rose-deep);color:#fff}
+a{color:inherit}
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(60% 40% at 15% 0%, rgba(143,95,125,.22), transparent 70%),
+    radial-gradient(55% 40% at 88% 12%, rgba(232,200,122,.14), transparent 70%),
+    radial-gradient(70% 55% at 50% 110%, rgba(154,74,98,.20), transparent 70%);}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.26'/%3E%3C/svg%3E");}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 90% 75% at 50% 45%, transparent 55%, rgba(0,0,0,.55) 100%)}
+#progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90;background:rgba(255,255,255,.07)}
+#progress span{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--rose-smoke),var(--rose),var(--amber),var(--gold))}
+
+/* top nav */
+.topbar{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:80;width:min(1120px,calc(100% - 24px));
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:rgba(11,14,20,.62);border:1px solid var(--line);border-radius:999px;padding:10px 10px 10px 20px;backdrop-filter:blur(14px)}
+.brand{font-family:var(--serif);font-style:italic;font-size:17px;letter-spacing:.01em;white-space:nowrap}
+.brand b{font-style:normal;font-weight:600}
+.top-links{display:flex;align-items:center;gap:2px}
+.top-links a{text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 14px;border-radius:999px;color:rgba(244,237,227,.78);transition:.25s}
+.top-links a:hover{background:rgba(255,255,255,.08);color:#fff}
+.top-cta{text-decoration:none;font-size:13px;font-weight:700;background:linear-gradient(180deg,#ffe3ae,#e8c87a);color:#3a2e3f!important;padding:10px 18px!important}
+.top-cta:hover{filter:brightness(1.06)}
+@media(max-width:760px){.top-links a.hide-m{display:none}.brand{font-size:15px}}
+
+main{position:relative;z-index:2}
+.wrap{width:min(1120px,100%);margin:0 auto;padding:0 22px}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 60px;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);
+  border:1px solid rgba(242,198,160,.3);background:rgba(242,198,160,.08);padding:9px 16px;border-radius:999px}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:blink 1.8s infinite}
+@keyframes blink{50%{opacity:.3}}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(46px,8.5vw,108px);line-height:1.0;letter-spacing:-.02em;margin:26px 0 8px}
+.hero h1 em{font-style:italic;background:linear-gradient(180deg,#fff 10%,var(--amber) 50%,var(--rose) 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .char{display:inline-block;will-change:transform,opacity}
+.hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.6vw,26px);color:rgba(244,237,227,.85);max-width:30em}
+.hero-copy{margin-top:16px;color:var(--ash);max-width:36em;font-size:16px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:15px;border-radius:999px;padding:15px 26px;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(180deg,#ffe3ae,#e8a558);color:#3a2e3f;box-shadow:0 14px 40px rgba(232,165,88,.35)}
+.btn-ghost{border-color:rgba(255,255,255,.18);color:var(--paper);background:rgba(255,255,255,.05)}
+.btn-ghost:hover{border-color:var(--rose);color:var(--rose)}
+.meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.meta{font-size:12.5px;letter-spacing:.06em;color:rgba(244,237,227,.6);border:1px solid var(--line);padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.03)}
+.meta strong{color:var(--gold)}
+.hero-hint{margin-top:34px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;color:rgba(244,237,227,.45);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+.hero-hint span.line{width:1px;height:52px;background:linear-gradient(var(--rose),transparent);display:block;position:relative;overflow:hidden}
+.hero-hint span.line::after{content:"";position:absolute;left:0;top:-40%;width:100%;height:40%;background:var(--rose);animation:cue 2.2s infinite}
+@keyframes cue{to{top:110%}}
+
+/* marquee */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:14px 0;color:rgba(244,237,227,.5);font-family:var(--serif);font-style:italic;font-size:16px}
+.marquee-track{display:inline-block;animation:mq 30s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* section heads */
+.sec{padding:90px 0 10px}
+.kicker{font-family:var(--serif);font-style:italic;color:var(--rose-smoke);display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.kicker::before{content:"";width:26px;height:1px;background:currentColor;opacity:.6}
+.sec h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.6vw,56px);line-height:1.1;letter-spacing:-.015em}
+.sec h2 em{font-style:italic;color:var(--amber)}
+.sec p.lead{color:rgba(244,237,227,.7);max-width:38em;margin-top:12px}
+
+/* cards */
+.grid{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-bottom:10px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.card{position:relative;display:flex;flex-direction:column;text-decoration:none;border-radius:22px;overflow:hidden;
+  border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  transition:transform .3s,border-color .3s,box-shadow .3s;min-height:340px}
+.card:hover{transform:translateY(-5px);border-color:rgba(232,156,174,.5);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.card-art{height:190px;position:relative;overflow:hidden}
+.card-art svg{width:100%;height:100%;display:block}
+.card-body{padding:24px 24px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card-no{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--rose-smoke)}
+.card-body h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);line-height:1.15}
+.card-body h3 span{font-style:italic;font-weight:300;color:var(--amber)}
+.card-body p{color:rgba(244,237,227,.7);font-size:15px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.tags span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.14);color:rgba(244,237,227,.65)}
+.tags span.hot{border-color:rgba(232,200,122,.5);color:var(--gold)}
+.card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px dashed rgba(255,255,255,.12)}
+.go{font-weight:700;font-size:14px;color:var(--amber);display:flex;align-items:center;gap:8px}
+.go i{transition:transform .25s;font-style:normal}
+.card:hover .go i{transform:translateX(6px)}
+.time{font-size:12.5px;color:rgba(244,237,227,.5)}
+.card.featured{grid-column:1/-1;flex-direction:row;min-height:260px}
+.card.featured .card-art{width:44%;height:auto;min-height:280px}
+.card.featured .card-body{justify-content:center;padding:34px}
+@media(max-width:860px){.card.featured{flex-direction:column}.card.featured .card-art{width:100%;height:200px;min-height:0}}
+.finale-ring{position:absolute;top:16px;right:16px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(11,14,20,.6);border:1px solid rgba(232,200,122,.5);color:var(--gold);padding:8px 13px;border-radius:999px;backdrop-filter:blur(6px)}
+
+/* routes */
+.routes{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.routes{grid-template-columns:1fr}}
+.route{border:1px solid var(--line);border-radius:18px;padding:24px;background:rgba(255,255,255,.03)}
+.route h4{font-family:var(--serif);font-size:20px;margin-bottom:6px}
+.route h4 em{color:var(--rose);font-size:14px;display:block;font-style:italic;margin-bottom:4px}
+.route p{font-size:14px;color:rgba(244,237,227,.68)}
+.route ol{margin:14px 0 0 18px;font-size:14px;color:rgba(244,237,227,.8)}
+.route button{margin-top:16px;width:100%;border:1px solid rgba(232,200,122,.45);background:transparent;color:var(--gold);border-radius:999px;padding:11px;font:700 13px var(--sans);cursor:pointer;letter-spacing:.04em;transition:.25s}
+.route button:hover{background:rgba(232,200,122,.12)}
+
+/* note */
+.note-card{margin-top:34px;border-radius:22px;border:1px solid rgba(232,156,174,.3);padding:clamp(28px,5vw,56px);text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(80% 90% at 50% 0%,rgba(232,156,174,.16),transparent 65%),linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01))}
+.note-card p{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.6vw,27px);max-width:26em;margin:0 auto;color:rgba(244,237,227,.9)}
+.note-card .keys{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+kbd{font-family:var(--sans);font-size:12px;border:1px solid rgba(255,255,255,.2);border-bottom-width:2px;border-radius:8px;padding:5px 10px;color:rgba(244,237,227,.75);background:rgba(255,255,255,.05)}
+
+/* footer */
+footer{margin-top:80px;border-top:1px solid var(--line);padding:36px 0 90px;color:rgba(244,237,227,.5);font-size:13px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.foot nav{display:flex;gap:4px;flex-wrap:wrap}
+.foot nav a{text-decoration:none;font-weight:600;padding:8px 12px;border-radius:999px;font-size:13px;color:rgba(244,237,227,.65)}
+.foot nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+
+/* reveals */
+.reveal{opacity:0;transform:translateY(26px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .9s ease,transform .9s ease}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.marquee-track{animation:none}}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"><span id="pfill"></span></div>
+
+<header class="topbar">
+  <div class="brand">for <b>Rekha</b> · five small worlds</div>
+  <nav class="top-links" aria-label="Main navigation">
+    <a class="hide-m" href="#paths">Paths</a>
+    <a class="hide-m" href="#routes">How to wander</a>
+    <a class="hide-m" href="#note">A note</a>
+    <a class="top-cta" href="S/index.html">Begin →</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><i></i> a private constellation · just for you</span>
+      <h1 id="heroTitle">Rekha, <em>pick a path back to me.</em></h1>
+      <p class="hero-sub">Five hand-made worlds. One apology, told five ways.</p>
+      <p class="hero-copy">Each path is short and complete on its own — scroll, touch, hold, listen. Wander in any order, but if it is your first time, start with the letter and end with the heart.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="S/index.html">Start at the beginning →</a>
+        <a class="btn btn-ghost" href="#paths">See all five paths</a>
+        <button class="btn btn-ghost" id="shuffle" type="button">⟡ Surprise me</button>
+      </div>
+      <div class="meta-row">
+        <span class="meta"><strong>5</strong> paths · ~20 min together</span>
+        <span class="meta">sound optional · off by default</span>
+        <span class="meta">best read slowly · phone or laptop</span>
+        <span class="meta">keys <strong>1–5</strong> jump to a path</span>
+      </div>
+      <div class="hero-hint"><span>scroll</span><span class="line"></span></div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><span class="marquee-track" id="mq">listen first · stay a little · small things, kept · no rush · listen first · stay a little · small things, kept · no rush ·&nbsp;</span></div>
+
+  <section class="sec" id="paths">
+    <div class="wrap">
+      <p class="kicker">the five paths</p>
+      <h2>Every path ends <em>in the same place.</em></h2>
+      <p class="lead">With “I’m sorry” — and a promise to be softer. Choose by mood, or follow the numbers.</p>
+
+      <div class="grid">
+        <a class="card featured reveal" href="S/index.html" data-key="1">
+          <div class="card-art" aria-hidden="true">
+            <svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#141828"/><stop offset="100%" stop-color="#f4ede3"/></linearGradient></defs><rect width="400" height="280" fill="url(#sBg)"/><text x="40" y="150" font-family="Georgia" font-size="72" font-weight="300" fill="#f4ede3" opacity=".9">Rekha,</text><text x="42" y="182" font-family="Georgia" font-style="italic" font-size="22" fill="#c8a2a2">it’s me — scroll slowly.</text><circle cx="330" cy="70" r="26" fill="#e9d9c3" opacity=".9"/><circle cx="330" cy="70" r="44" fill="#e9d9c3" opacity=".18"/></svg>
+          </div>
+          <div class="card-body">
+            <span class="card-no">path 01 · press 1</span>
+            <h3>The Quiet Letter <span>— words first</span></h3>
+            <p>A slow typographic letter that warms from dusk to dawn as you scroll. The calmest door in. Start here.</p>
+            <div class="tags"><span class="hot">recommended start</span><span>typographic</span><span>dusk → dawn</span></div>
+            <div class="card-foot"><span class="go">Open the letter <i>→</i></span><span class="time">~4 min · gentlest</span></div>
+          </div>
+        </a>
+
+        <a class="card reveal" href="R/index.html" data-key="2">
+          <div class="card-art" aria-hidden="true">
+            <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice"><rect width="400" height="190" fill="#14121f"/><path d="M200 175 C 195 130, 205 100, 200 70" stroke="#4a3540" stroke-width="5" fill="none" stroke-linecap="round"/><g transform="translate(200 52)"><path d="M0 -6 C -20 -18, -22 -44, -6 -56 C 6 -42, 6 -18, 0 -6 Z" fill="#e89cae"/><path d="M0 -6 C 0 -26, 12 -46, 28 -50 C 28 -32, 14 -12, 0 -6 Z" fill="#f2c6a0"/><circle cx="0" cy="-4" r="6" fill="#e8c87a"/></g><circle cx="200" cy="52" r="60" fill="#f2c6a0" opacity=".12"/></svg>
+          </div>
+          <div class="card-body">
+            <span class="card-no">path 02 · press 2</span>
+            <h3>The Bloom Film <span>— frame by frame</span></h3>
+            <p>Seven scroll-chapters. A vine grows with you, then opens — I mean every petal of it.</p>
+            <div class="tags"><span>cinematic</span><span>vine → bloom</span></div>
+            <div class="card-foot"><span class="go">Play the film <i>→</i></span><span class="time">~5 min</span></div>
+          </div>
+        </a>
+
+        <a class="card reveal" href="F/index.html" data-key="3">
+          <div class="card-art" aria-hidden="true">
+            <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice"><rect width="400" height="190" fill="#1a2340"/><circle cx="320" cy="45" r="24" fill="#fdf3d3"/><path d="M0 130 C100 115 200 125 400 110 L400 190 L0 190 Z" fill="#33465f"/><path d="M60 125 C160 100 280 100 340 118" stroke="#5d4030" stroke-width="8" fill="none" stroke-linecap="round"/><ellipse cx="140" cy="120" rx="16" ry="10" fill="#f2cfae"/><ellipse cx="200" cy="118" rx="14" ry="9" fill="#d9a7a0"/><circle cx="120" cy="60" r="3" fill="#fff"/><circle cx="220" cy="40" r="2.5" fill="#fff"/><circle cx="90" cy="45" r="2" fill="#fff"/></svg>
+          </div>
+          <div class="card-body">
+            <span class="card-no">path 03 · press 3</span>
+            <h3>A Small World <span>— come play</span></h3>
+            <p>Piku follows your cursor, Miri wants pets, the boat needs guiding. The most playful one.</p>
+            <div class="tags"><span class="hot">most interactive</span><span>companions</span></div>
+            <div class="card-foot"><span class="go">Enter the world <i>→</i></span><span class="time">~6 min</span></div>
+          </div>
+        </a>
+
+        <a class="card reveal" href="A/index.html" data-key="4">
+          <div class="card-art" aria-hidden="true">
+            <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice"><rect width="400" height="190" fill="#0D1326"/><circle cx="320" cy="50" r="26" fill="#F5E5BE"/><circle cx="320" cy="50" r="48" fill="#F0C778" opacity=".18"/><path d="M10 150 C120 140 220 120 360 100" stroke="#4A3B4A" stroke-width="10" fill="none" stroke-linecap="round"/><ellipse cx="280" cy="105" rx="16" ry="8" fill="#65747E"/><ellipse cx="310" cy="100" rx="14" ry="7" fill="#5C8A6B"/><circle cx="200" cy="40" r="1.8" fill="#EDE8DC"/><circle cx="260" cy="30" r="1.4" fill="#EDE8DC"/><circle cx="140" cy="55" r="1.6" fill="#EDE8DC"/></svg>
+          </div>
+          <div class="card-body">
+            <span class="card-no">path 04 · press 4</span>
+            <h3>The Quiet Walk <span>— two minutes</span></h3>
+            <p>Two birds, a cold cup of tea, and a garden that only blooms if you hold on. The deepest one.</p>
+            <div class="tags"><span>nocturnal</span><span>hold-to-bloom</span></div>
+            <div class="card-foot"><span class="go">Take the walk <i>→</i></span><span class="time">~5 min · deepest</span></div>
+          </div>
+        </a>
+
+        <a class="card reveal" href="M/index.html" data-key="5">
+          <div class="card-art" aria-hidden="true">
+            <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice"><rect width="400" height="190" fill="#241A26"/><g fill="#E8C4B8"><circle cx="185" cy="80" r="3"/><circle cx="200" cy="70" r="4"/><circle cx="215" cy="80" r="3"/><circle cx="190" cy="95" r="3.4"/><circle cx="210" cy="95" r="3.4"/><circle cx="200" cy="108" r="3"/><circle cx="175" cy="65" r="2"/><circle cx="225" cy="65" r="2"/><circle cx="200" cy="55" r="2.2"/></g><circle cx="200" cy="82" r="55" fill="#D98E73" opacity=".12"/><text x="200" y="160" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="17" fill="#E8C4B8">touch the light gently</text></svg>
+            <span class="finale-ring">save for last ♥</span>
+          </div>
+          <div class="card-body">
+            <span class="card-no">path 05 · press 5</span>
+            <h3>Heart of Light <span>— one breath</span></h3>
+            <p>No scroll. Just watch hundreds of lights gather into a heart. Sixty seconds. End here.</p>
+            <div class="tags"><span class="hot">finale</span><span>particles</span><span>1 min</span></div>
+            <div class="card-foot"><span class="go">Watch it gather <i>→</i></span><span class="time">~1 min · quietest</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="routes">
+    <div class="wrap">
+      <p class="kicker">how to wander</p>
+      <h2>Three ways <em>through.</em></h2>
+      <p class="lead">There is no wrong order — but these three have been thought about. Each button walks you through its route, one path at a time.</p>
+      <div class="routes">
+        <div class="route reveal">
+          <h4><em>route i · first time</em>The whole arc</h4>
+          <p>Words → film → play → night → heart. The apology as it was meant to land.</p>
+          <ol><li>Quiet Letter</li><li>Bloom Film</li><li>Small World</li><li>Quiet Walk</li><li>Heart</li></ol>
+          <button type="button" data-route="S,R,F,A,M">Begin the whole arc →</button>
+        </div>
+        <div class="route reveal">
+          <h4><em>route ii · little time</em>Two minutes, honestly</h4>
+          <p>One page of words, one breath of light. Enough, if that is all tonight allows.</p>
+          <ol><li>Quiet Letter</li><li>Heart</li></ol>
+          <button type="button" data-route="S,M">Begin the short version →</button>
+        </div>
+        <div class="route reveal">
+          <h4><em>route iii · heavy heart</em>Play first, cry later</h4>
+          <p>Start where it is lightest — with the animals — then let the night walk in.</p>
+          <ol><li>Small World</li><li>Quiet Walk</li><li>Heart</li></ol>
+          <button type="button" data-route="F,A,M">Begin the soft way →</button>
+        </div>
+      </div>
+
+      <div class="note-card reveal" id="note">
+        <p>“Take all the time you need. I’ll be here — steadier, listening better.”</p>
+        <div class="keys"><span><kbd>1</kbd>–<kbd>5</kbd> jump to a path</span><span><kbd>←</kbd><kbd>→</kbd> move between paths inside each world</span><span><kbd>H</kbd> back here</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <span>made by hand, with everything I have · for Rekha only</span>
+      <nav aria-label="Footer">
+        <a href="S/index.html">Letter</a><a href="R/index.html">Film</a><a href="F/index.html">World</a><a href="A/index.html">Walk</a><a href="M/index.html">Heart</a>
+      </nav>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* split hero title into chars */
+  try{
+    var h = document.getElementById('heroTitle');
+    var walk = function(node){
+      var frag = document.createDocumentFragment();
+      Array.prototype.forEach.call(node.childNodes, function(n){
+        if(n.nodeType===3){
+          Array.prototype.forEach.call(n.textContent, function(ch){
+            var s=document.createElement('span'); s.className='char'; s.textContent=(ch===' ')?'\u00A0':ch; frag.appendChild(s);
+          });
+        } else if(n.nodeName==='EM'){
+          var em=document.createElement('em'); Array.prototype.forEach.call(n.textContent,function(ch){var s=document.createElement('span');s.className='char';s.textContent=(ch===' ')?'\u00A0':ch;em.appendChild(s);}); frag.appendChild(em);
+        } else { frag.appendChild(n.cloneNode(true)); }
+      });
+      node.innerHTML=''; node.appendChild(frag);
+    };
+    walk(h);
+    if(!reduced && window.gsap){
+      var s=document.createElement('script'); s.src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js';
+      s.onload=function(){ try{ gsap.from('#heroTitle .char',{yPercent:110,opacity:0,rotate:2,stagger:0.018,duration:0.7,ease:'power3.out'}); }catch(e){} };
+      document.head.appendChild(s);
+    }
+  }catch(e){}
+
+  /* starfield canvas */
+  var cv=document.getElementById('stars'), ctx=cv.getContext('2d');
+  var W=0,H=0, P=[], N = reduced?0:(window.innerWidth<700?70:140);
+  function size(){ W=window.innerWidth;H=window.innerHeight; var d=Math.min(devicePixelRatio||1,2); cv.width=W*d;cv.height=H*d;cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(d,0,0,d,0,0); }
+  size(); window.addEventListener('resize',size);
+  for(var i=0;i<N;i++) P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:.6+Math.random()*1.8,a:.25+Math.random()*.6,ph:Math.random()*6.28,rose:Math.random()<.22});
+  var mx=innerWidth/2,my=innerHeight*0.35;
+  window.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;},{passive:true});
+  var t=0;
+  function tick(){
+    requestAnimationFrame(tick); if(document.hidden||reduced) return; t++;
+    ctx.clearRect(0,0,W,H);
+    for(var k=0;k<P.length;k++){ var p=P[k];
+      var dx=mx-p.x,dy=my-p.y,d=Math.sqrt(dx*dx+dy*dy)||1;
+      if(d<180){ p.x+=dx/d*.25; p.y+=dy/d*.25; } else { p.x+=(Math.random()-.5)*.15; }
+      if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10; if(p.y<-10)p.y=H+10; if(p.y>H+10)p.y=-10;
+      var tw=.5+.5*Math.sin(t*.02+p.ph);
+      ctx.globalAlpha=p.a*(.4+.6*tw);
+      ctx.fillStyle=p.rose?'#e89cae':'#f4ede3';
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fill();
+      if(p.r>1.8){ ctx.globalAlpha=p.a*.12*tw; ctx.beginPath();ctx.arc(p.x,p.y,p.r*4,0,6.283);ctx.fill(); }
+    }
+    ctx.globalAlpha=1;
+  }
+  if(!reduced) requestAnimationFrame(tick);
+
+  /* progress */
+  var fill=document.getElementById('pfill');
+  function prog(){ var h=document.documentElement, m=h.scrollHeight-h.clientHeight; fill.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')'; }
+  window.addEventListener('scroll',prog,{passive:true}); prog();
+
+  /* marquee duplicate */
+  var mq=document.getElementById('mq'); mq.textContent=(mq.textContent+mq.textContent);
+
+  /* reveals */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* shuffle */
+  var order=['S','R','F','A','M'];
+  document.getElementById('shuffle').addEventListener('click',function(){
+    var pick=order[Math.floor(Math.random()*order.length)];
+    window.location.href=pick+'/index.html';
+  });
+
+  /* keyboard 1-5 */
+  window.addEventListener('keydown',function(e){
+    if(e.key>='1'&&e.key<='5'){ window.location.href=order[Number(e.key)-1]+'/index.html'; }
+  });
+
+  /* routes: chain pages via ?next= */
+  document.querySelectorAll('[data-route]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var seq=b.getAttribute('data-route').split(',');
+      var first=seq.shift();
+      window.location.href=first+'/index.html?next='+encodeURIComponent(seq.join(','));
+    });
+  });
+})();
+</script>
+</body>
+</html>

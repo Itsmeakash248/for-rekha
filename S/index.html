@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>For Rekha — scroll slowly</title>
+<meta name="description" content="A quiet, scroll-driven letter for Rekha. Best read slowly, top to bottom." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../nav.css" />
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+<div class="dawn" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="rail" aria-hidden="true">
+  <div class="rail-track"><div class="rail-fill" id="railFill"></div></div>
+  <div class="rail-dots" id="railDots">
+    <span data-dot="1"></span><span data-dot="2"></span><span data-dot="3"></span><span data-dot="4"></span><span data-dot="5"></span><span data-dot="6"></span><span data-dot="7"></span>
+  </div>
+</div>
+
+<p class="scroll-hint" id="scrollHint" aria-hidden="true"><span class="scroll-hint-line"></span>scroll slowly</p>
+
+<main id="story">
+  <!-- 1 · OPENING -->
+  <section class="chapter ch-opening" id="ch1" aria-label="Opening">
+    <div class="ch-inner">
+      <p class="whisper reveal">a quiet page, just for you</p>
+      <h1 class="opening-line" data-split>Rekha, it&rsquo;s me.</h1>
+      <p class="opening-sub reveal">Scroll slowly. This only moves as fast as you do.</p>
+      <p class="opening-second" id="openingSecond">I made this so I could say it properly.</p>
+    </div>
+    <div class="ghost" aria-hidden="true">listen</div>
+  </section>
+
+  <!-- 2 · THE WEIGHT -->
+  <section class="chapter ch-weight" id="ch2" aria-label="The weight of it">
+    <div class="ch-inner narrow">
+      <p class="whisper reveal">that evening, I got it wrong</p>
+      <div class="weight-lines">
+        <p class="wline" data-wline>I replay what I said, and how your face changed after.</p>
+        <p class="wline" data-wline>You didn&rsquo;t overreact. I was careless with my tone.</p>
+        <p class="wline dim" data-wline>I&rsquo;m not writing this to defend myself. There&rsquo;s no defence &mdash; only that I hurt you, and I know it.</p>
+      </div>
+    </div>
+    <div class="ghost" aria-hidden="true">weight</div>
+  </section>
+
+  <!-- 3 · REPLAYING -->
+  <section class="chapter ch-replay" id="ch3" aria-label="Replaying it">
+    <div class="h-pin" id="hPin">
+      <canvas id="dust" aria-hidden="true"></canvas>
+      <div class="h-head">
+        <p class="whisper light">it keeps replaying</p>
+        <h2 class="replay-title" data-split>If I could rewind it.</h2>
+        <p class="replay-note">Moving down moves time. Move back up and it rewinds.</p>
+      </div>
+      <div class="h-track" id="hTrack">
+        <article class="memory m1">
+          <span class="m-num">01</span>
+          <div class="m-swash"></div>
+          <p>Your voice note at 11pm, laughing halfway through because the dog was snoring behind you.</p>
+        </article>
+        <article class="memory m2">
+          <span class="m-num">02</span>
+          <div class="m-swash"></div>
+          <p>That wrong turn near the lake. Lost for twenty minutes and neither of us minded.</p>
+        </article>
+        <article class="memory m3">
+          <span class="m-num">03</span>
+          <div class="m-swash"></div>
+          <p>You straightening my collar without looking up, mid-sentence, like it was nothing.</p>
+        </article>
+        <article class="memory m4">
+          <span class="m-num">04</span>
+          <div class="m-swash"></div>
+          <p>The quiet after I spoke. The part I would take back first, if I could.</p>
+        </article>
+        <div class="memory m-end" aria-hidden="true"><p>hold that last frame.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · THE APOLOGY -->
+  <section class="chapter ch-peak" id="ch4" aria-label="The apology">
+    <div class="ch-inner peak-stage">
+      <p class="whisper">and so, plainly</p>
+      <h2 class="peak-word" data-split>I&rsquo;m sorry.</h2>
+      <p class="peak-side left">Not quickly. Not lightly.</p>
+      <p class="peak-side right">I sat with it. I mean it.</p>
+      <p class="peak-base">You deserved more care than I showed.</p>
+    </div>
+    <div class="ghost" aria-hidden="true">sorry</div>
+  </section>
+
+  <!-- 5 · WHAT CHANGES -->
+  <section class="chapter ch-bento" id="ch5" aria-label="What changes">
+    <div class="ch-inner wide">
+      <p class="whisper reveal">what I want you to know, and what I&rsquo;ll do</p>
+      <h2 class="bento-title reveal">Small things, kept on purpose.</h2>
+      <div class="bento">
+        <article class="bcard reveal"><span class="b-num">i</span><h3>You matter more than being right.</h3><p>In an argument I&rsquo;ll drop the point and keep you. Listening first, answering second.</p></article>
+        <article class="bcard reveal"><span class="b-num">ii</span><h3>When I&rsquo;m off, I&rsquo;ll say it.</h3><p>If the day has me short-tempered, you&rsquo;ll hear &ldquo;today is heavy&rdquo; instead of a silence you have to decode.</p></article>
+        <article class="bcard reveal"><span class="b-num">iii</span><h3>Your plans are plans.</h3><p>Your shoots, your rest, your friends &mdash; they go on the calendar in ink, not pencil.</p></article>
+        <article class="bcard reveal"><span class="b-num">iv</span><h3>The ordinary, remembered.</h3><p>Morning chai, the call when I land, asking about your mother. Kept, even when I&rsquo;m busy.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · RESOLUTION -->
+  <section class="chapter ch-resolve" id="ch6" aria-label="Resolution">
+    <div class="ch-inner narrow resolve-stage">
+      <p class="whisper">repair</p>
+      <div class="ring-wrap" aria-hidden="true">
+        <canvas id="calm"></canvas>
+        <div class="ring-core"></div>
+      </div>
+      <h2 class="resolve-title" data-split>Nothing flashy. Just steady.</h2>
+      <p class="resolve-text">I can&rsquo;t unsay that evening. I can make the next hundred evenings kinder.</p>
+      <p class="resolve-text dim">This part is slower on purpose. Stay a moment.</p>
+    </div>
+  </section>
+
+  <!-- 7 · CLOSING -->
+  <section class="chapter ch-close" id="ch7" aria-label="Closing">
+    <div class="ch-inner narrow close-stage">
+      <div class="breath" aria-hidden="true"><span></span></div>
+      <h2 class="close-name" data-split>Rekha.</h2>
+      <p class="close-line reveal">Take all the time you need. I&rsquo;ll be here &mdash; steadier, listening better.</p>
+      <p class="close-sign reveal">yours</p>
+      <p class="close-foot">made slowly, for one person &middot; scroll back up any time</p>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+<script src="../nav.js"></script>
+</body>
+</html>

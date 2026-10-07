@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>For Rekha — a quiet walk back</title>
+<meta name="description" content="A small illustrated walk, made by hand, for Rekha. Two minutes, five scenes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../nav.css">
+</head>
+<body data-bloom="0" data-scene="1">
+
+<!-- Shared SVG gradient + filter library. Every fill on this site points here: no flat color. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="moonCore" cx="38%" cy="34%" r="75%">
+      <stop offset="0%" stop-color="#FFF8E6"/>
+      <stop offset="42%" stop-color="#F5E5BE"/>
+      <stop offset="78%" stop-color="#D9BE8E"/>
+      <stop offset="100%" stop-color="#A98F66"/>
+    </radialGradient>
+    <radialGradient id="moonHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F0C778" stop-opacity=".55"/>
+      <stop offset="45%" stop-color="#F0C778" stop-opacity=".18"/>
+      <stop offset="100%" stop-color="#F0C778" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="barkGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2B2333"/>
+      <stop offset="35%" stop-color="#4A3B4A"/>
+      <stop offset="70%" stop-color="#332A3A"/>
+      <stop offset="100%" stop-color="#1B1626"/>
+    </linearGradient>
+    <linearGradient id="leafNight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9AA9B2"/>
+      <stop offset="45%" stop-color="#65747E"/>
+      <stop offset="100%" stop-color="#39434E"/>
+    </linearGradient>
+    <linearGradient id="leafAlive" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#BDE3C4"/>
+      <stop offset="40%" stop-color="#5C8A6B"/>
+      <stop offset="78%" stop-color="#33523F"/>
+      <stop offset="100%" stop-color="#223A2D"/>
+    </linearGradient>
+    <radialGradient id="petalMoon" cx="40%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#EFD9D2"/>
+      <stop offset="80%" stop-color="#C49A98"/>
+      <stop offset="100%" stop-color="#8E6266"/>
+    </radialGradient>
+    <radialGradient id="petalRose" cx="42%" cy="32%" r="80%">
+      <stop offset="0%" stop-color="#FFE9DE"/>
+      <stop offset="38%" stop-color="#F2B8A8"/>
+      <stop offset="72%" stop-color="#D97F76"/>
+      <stop offset="100%" stop-color="#8E3F4B"/>
+    </radialGradient>
+    <radialGradient id="petalGold" cx="45%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#FFF4D6"/>
+      <stop offset="45%" stop-color="#F0C778"/>
+      <stop offset="80%" stop-color="#C98A4B"/>
+      <stop offset="100%" stop-color="#7A4A2E"/>
+    </radialGradient>
+    <radialGradient id="budClosed" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#C9A9A8"/>
+      <stop offset="55%" stop-color="#7E5A63"/>
+      <stop offset="100%" stop-color="#3A2836"/>
+    </radialGradient>
+    <linearGradient id="birdBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8EDF2"/>
+      <stop offset="45%" stop-color="#8E9FAD"/>
+      <stop offset="100%" stop-color="#3C4654"/>
+    </linearGradient>
+    <linearGradient id="birdWing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C7D2DC"/>
+      <stop offset="55%" stop-color="#5A6A7E"/>
+      <stop offset="100%" stop-color="#2A3342"/>
+    </linearGradient>
+    <radialGradient id="lanternGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE9B8" stop-opacity=".95"/>
+      <stop offset="40%" stop-color="#F0C778" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="#F0C778" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cloudPuff" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8FA0BE" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="#3A4560" stop-opacity=".12"/>
+    </linearGradient>
+    <linearGradient id="cupGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4E8DC"/>
+      <stop offset="45%" stop-color="#C9AFA4"/>
+      <stop offset="100%" stop-color="#5E4A4E"/>
+    </linearGradient>
+    <linearGradient id="noteGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF6E8"/>
+      <stop offset="60%" stop-color="#EAD9C2"/>
+      <stop offset="100%" stop-color="#B99E83"/>
+    </linearGradient>
+    <linearGradient id="skyWarm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A2340"/>
+      <stop offset="55%" stop-color="#5A3648"/>
+      <stop offset="100%" stop-color="#8E4A44"/>
+    </linearGradient>
+    <filter id="softBlur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="blurBig" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="grainSoft" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
+      <feComposite in="SourceGraphic" in2="n" operator="over"/>
+    </filter>
+    <filter id="groundShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+  </defs>
+</svg>
+
+<div id="loader" aria-hidden="true">
+  <div class="loader-moon"></div>
+  <p>lighting the lanterns…</p>
+</div>
+
+<canvas id="cosmos" aria-hidden="true"></canvas>
+
+<button id="sound-toggle" aria-pressed="false" aria-label="Toggle quiet sound">
+  <span class="dot"></span><span id="sound-label">quiet sound off</span>
+</button>
+
+<nav id="rail" aria-label="Story progress">
+  <a href="#scene-1" data-to="1" class="on"><i></i><span>Stillness</span></a>
+  <a href="#scene-2" data-to="2"><i></i><span>What happened</span></a>
+  <a href="#scene-3" data-to="3"><i></i><span>The walk</span></a>
+  <a href="#scene-4" data-to="4"><i></i><span>Sorry</span></a>
+  <a href="#scene-5" data-to="5"><i></i><span>Arrival</span></a>
+</nav>
+
+<div id="scroll-hint" aria-hidden="true"><span></span>scroll slowly</div>
+
+<div id="smooth-wrapper">
+<div id="smooth-content">
+
+  <!-- ══════════ SCENE 1 · HOOK ══════════ -->
+  <section class="scene hook" id="scene-1" data-scene-name="Stillness">
+    <div class="sky"></div>
+    <div class="mist m1" aria-hidden="true">
+      <svg viewBox="0 0 600 160"><g fill="url(#cloudPuff)" filter="url(#blurBig)">
+        <ellipse cx="150" cy="90" rx="130" ry="34"/><ellipse cx="330" cy="70" rx="150" ry="40"/><ellipse cx="490" cy="95" rx="110" ry="30"/>
+      </g></svg>
+    </div>
+
+    <div class="moon-wrap" data-parallax="0.05" aria-hidden="true">
+      <div class="moon-halo"></div>
+      <svg class="moon" viewBox="0 0 220 220">
+        <circle cx="110" cy="110" r="58" fill="url(#moonCore)"/>
+        <ellipse cx="92" cy="96" rx="10" ry="8" fill="#C9AE82" opacity=".55"/>
+        <ellipse cx="122" cy="122" rx="14" ry="11" fill="#B99A72" opacity=".5"/>
+        <ellipse cx="104" cy="132" rx="6" ry="5" fill="#A98865" opacity=".5"/>
+        <ellipse cx="130" cy="92" rx="5" ry="4" fill="#CBB086" opacity=".6"/>
+        <path id="moon-shadow" d="M110,52 A58,58 0 0,1 110,168 A74,58 0 0,0 110,52 Z" fill="#0D1326" opacity=".55"/>
+      </svg>
+      <p class="moon-caption">waxing — not full yet</p>
+    </div>
+
+    <div class="branch-stage" aria-hidden="true">
+      <svg id="branch-svg" viewBox="0 0 900 420">
+        <ellipse cx="700" cy="386" rx="130" ry="16" fill="#000" opacity=".35" filter="url(#softBlur)"/>
+        <path d="M40,360 C220,340 360,300 480,235 C560,195 620,170 740,150" fill="none" stroke="#171222" stroke-width="22" stroke-linecap="round"/>
+        <path d="M40,360 C220,340 360,300 480,235 C560,195 620,170 740,150" fill="none" stroke="url(#barkGrad)" stroke-width="15" stroke-linecap="round"/>
+        <path d="M40,360 C220,340 360,300 480,235 C560,195 620,170 740,150" fill="none" stroke="#6B5560" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+        <path d="M330,312 C360,270 380,240 430,215" fill="none" stroke="#241C2E" stroke-width="12" stroke-linecap="round"/>
+        <path d="M330,312 C360,270 380,240 430,215" fill="none" stroke="url(#barkGrad)" stroke-width="7" stroke-linecap="round"/>
+        <path d="M540,208 C580,180 610,168 660,160" fill="none" stroke="#241C2E" stroke-width="9" stroke-linecap="round"/>
+        <path d="M540,208 C580,180 610,168 660,160" fill="none" stroke="url(#barkGrad)" stroke-width="5" stroke-linecap="round"/>
+        <g id="hook-leaves" fill="url(#leafNight)">
+          <ellipse class="hl" cx="440" cy="222" rx="26" ry="12" transform="rotate(-24 440 222)"/>
+          <ellipse class="hl" cx="500" cy="205" rx="30" ry="13" transform="rotate(-14 500 205)"/>
+          <ellipse class="hl" cx="580" cy="188" rx="24" ry="11" transform="rotate(-30 580 188)"/>
+          <ellipse class="hl" cx="660" cy="168" rx="27" ry="12" transform="rotate(-12 660 168)"/>
+          <ellipse class="hl" cx="716" cy="158" rx="20" ry="10" transform="rotate(-28 716 158)"/>
+          <ellipse class="hl" cx="395" cy="248" rx="22" ry="10" transform="rotate(18 395 248)"/>
+        </g>
+        <!-- perched pair -->
+        <g id="bird-a" transform="translate(668,118)">
+          <ellipse cx="0" cy="0" rx="20" ry="13" fill="url(#birdBody)"/>
+          <circle cx="14" cy="-4" r="9" fill="url(#birdBody)"/>
+          <circle cx="17" cy="-5" r="1.8" fill="#101623"/>
+          <path d="M23,-4 L30,-2 L23,0 Z" fill="#E8A7A0"/>
+          <path class="wing-a" d="M-12,-2 C-2,-18 14,-20 20,-10 C10,-8 -2,-4 -10,4 Z" fill="url(#birdWing)"/>
+          <path d="M-18,6 L-22,14 M-12,8 L-14,16" stroke="#2A3342" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <g id="bird-b" transform="translate(612,126)">
+          <ellipse cx="0" cy="0" rx="16" ry="10.5" fill="url(#birdBody)" opacity=".95"/>
+          <circle cx="11" cy="-3" r="7" fill="url(#birdBody)"/>
+          <circle cx="13.5" cy="-4" r="1.5" fill="#101623"/>
+          <path d="M18,-3 L24,-1.5 L18,0 Z" fill="#E8A7A0"/>
+          <path class="wing-b" d="M-9,-1 C-1,-14 11,-15 15,-8 C7,-6 -1,-3 -8,3 Z" fill="url(#birdWing)"/>
+        </g>
+      </svg>
+      <p class="bird-note">two small night birds. one of them is about to leave.</p>
+    </div>
+
+    <div class="copy hook-copy">
+      <p class="kicker">for Rekha · a two-minute walk</p>
+      <h1 class="split">Rekha — don't scroll fast. Give me two minutes.</h1>
+      <p class="sub">Something quiet, made only for you. The garden is asleep. Walk in slowly and watch the branch.</p>
+      <p class="micro" id="hook-react-line">First scroll wakes it — keep going, gently.</p>
+    </div>
+
+    <div class="lantern-row" aria-hidden="true">
+      <svg viewBox="0 0 400 80" class="lanterns">
+        <g><circle cx="60" cy="40" r="26" fill="url(#lanternGlow)"/><path d="M60,26 L68,40 L60,54 L52,40 Z" fill="#F6DC9E" opacity=".9"/><line x1="60" y1="10" x2="60" y2="26" stroke="#4A3B4A" stroke-width="1.5"/></g>
+        <g><circle cx="200" cy="34" r="34" fill="url(#lanternGlow)"/><path d="M200,18 L210,34 L200,50 L190,34 Z" fill="#F6DC9E" opacity=".9"/><line x1="200" y1="2" x2="200" y2="18" stroke="#4A3B4A" stroke-width="1.5"/></g>
+        <g><circle cx="330" cy="44" r="22" fill="url(#lanternGlow)"/><path d="M330,32 L337,44 L330,56 L323,44 Z" fill="#F6DC9E" opacity=".9"/><line x1="330" y1="16" x2="330" y2="32" stroke="#4A3B4A" stroke-width="1.5"/></g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══════════ SCENE 2 · CONTEXT ══════════ -->
+  <section class="scene context" id="scene-2" data-scene-name="What happened">
+    <div class="vine-bg" aria-hidden="true">
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+        <path id="vine-grow" d="M80,580 C140,460 120,380 200,300 C280,220 260,140 380,110 C480,86 560,120 640,80" fill="none" stroke="#4A5560" stroke-width="5" stroke-linecap="round"/>
+        <path d="M80,580 C140,460 120,380 200,300 C280,220 260,140 380,110 C480,86 560,120 640,80" fill="none" stroke="#2C3540" stroke-width="10" stroke-linecap="round" opacity=".5"/>
+        <g fill="url(#leafNight)" opacity=".85" id="droop-leaves">
+          <ellipse cx="185" cy="330" rx="26" ry="11" transform="rotate(38 185 330)"/>
+          <ellipse cx="250" cy="255" rx="24" ry="10" transform="rotate(48 250 255)"/>
+          <ellipse cx="340" cy="150" rx="22" ry="10" transform="rotate(28 340 150)"/>
+          <ellipse cx="470" cy="100" rx="24" ry="10" transform="rotate(12 470 100)"/>
+          <ellipse cx="580" cy="100" rx="20" ry="9" transform="rotate(-16 580 100)"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="context-grid">
+      <div class="copy">
+        <p class="kicker">the honest part</p>
+        <h2 class="split">The evening I got it wrong.</h2>
+        <p class="body">You told me about your day and I answered like it was small. I heard your voice change and I kept scrolling anyway. That is the part I keep replaying — not the argument after. The second I chose not to look up.</p>
+        <p class="body dim">Nothing here is fixed yet. This part of the garden is still asleep, on purpose.</p>
+      </div>
+
+      <div class="interact-card" id="interact-1">
+        <div class="teacup" aria-hidden="true">
+          <svg viewBox="0 0 200 150">
+            <ellipse cx="100" cy="128" rx="52" ry="9" fill="#000" opacity=".35" filter="url(#softBlur)"/>
+            <path d="M55,70 L60,118 Q100,128 140,118 L145,70 Z" fill="url(#cupGrad)"/>
+            <ellipse cx="100" cy="70" rx="45" ry="10" fill="#3A2E38"/>
+            <ellipse cx="100" cy="70" rx="38" ry="7" fill="#241C28"/>
+            <path d="M145,78 Q168,80 162,100 Q157,114 138,112" fill="none" stroke="#8B7370" stroke-width="7" stroke-linecap="round"/>
+            <path class="steam" d="M80,55 C78,42 84,36 82,24" fill="none" stroke="#9AA9B2" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+            <path class="steam" d="M102,56 C100,44 106,38 104,26" fill="none" stroke="#9AA9B2" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+          </svg>
+          <p>yours went cold</p>
+        </div>
+
+        <div class="leaf-lab">
+          <p class="lab-title">Interaction · one of three</p>
+          <h3>Pull the hanging leaf.</h3>
+          <p class="lab-sub">It is wilted, but it has weight. Drag it and let go — watch how it settles. Nothing resolves yet. That is honest too.</p>
+          <div id="leaf-physics-zone">
+            <svg id="leaf-string-svg" viewBox="0 0 260 300">
+              <line id="leaf-string" x1="130" y1="8" x2="130" y2="150" stroke="#5A6672" stroke-width="3"/>
+              <g id="wilt-leaf" style="cursor:grab">
+                <ellipse cx="0" cy="0" rx="46" ry="22" fill="url(#leafNight)" transform="rotate(24)"/>
+                <ellipse cx="0" cy="0" rx="46" ry="22" fill="#2E3842" opacity=".25" transform="rotate(24) translate(4,4)"/>
+                <path d="M-44,0 L44,0" stroke="#2E3842" stroke-width="2.5"/>
+                <path d="M-20,-2 L-12,-14 M0,0 L10,-14 M20,2 L28,-8" stroke="#2E3842" stroke-width="1.5"/>
+              </g>
+            </svg>
+            <div id="leaf-touch" aria-label="Drag the leaf"></div>
+          </div>
+          <p class="lab-feedback" id="leaf-feedback">go on — it can take it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SCENE 3 · JOURNEY ══════════ -->
+  <section class="scene journey" id="scene-3" data-scene-name="The walk">
+    <div class="journey-pin">
+      <div class="copy journey-head">
+        <p class="kicker">the middle — walk it with me</p>
+        <h2 class="split">Three small scenes from after.</h2>
+        <p class="sub">Drag sideways, or just keep scrolling. The last stretch will ask your hand to stay a while.</p>
+      </div>
+      <div class="filmstrip" id="filmstrip">
+        <article class="panel" data-panel="1">
+          <div class="panel-art" aria-hidden="true">
+            <svg viewBox="0 0 300 220">
+              <ellipse cx="150" cy="190" rx="90" ry="12" fill="#000" opacity=".3" filter="url(#softBlur)"/>
+              <rect x="40" y="60" width="220" height="120" rx="10" fill="#2A2438"/>
+              <rect x="40" y="60" width="220" height="120" rx="10" fill="none" stroke="#5A4E6E" stroke-width="2"/>
+              <g><path d="M95,110 L98,150 Q120,156 142,150 L145,110 Z" fill="url(#cupGrad)"/><path d="M145,118 Q158,119 155,131 Q152,139 141,138" fill="none" stroke="#8B7370" stroke-width="4"/></g>
+              <g opacity=".55"><path d="M180,110 L183,150 Q205,156 227,150 L230,110 Z" fill="url(#cupGrad)"/><path d="M230,118 Q243,119 240,131 Q237,139 226,138" fill="none" stroke="#8B7370" stroke-width="4"/></g>
+              <path d="M115,95 C113,86 118,82 116,74" stroke="#9AA9B2" stroke-width="2" fill="none" opacity=".4"/>
+            </svg>
+          </div>
+          <p class="panel-no">one</p>
+          <h3>Two cups.</h3>
+          <p>Yours went cold. I said “one minute” three times. It was never one minute.</p>
+        </article>
+        <article class="panel" data-panel="2">
+          <div class="panel-art" aria-hidden="true">
+            <svg viewBox="0 0 300 220">
+              <ellipse cx="150" cy="190" rx="90" ry="12" fill="#000" opacity=".3" filter="url(#softBlur)"/>
+              <path d="M60,190 L110,90 L190,90 L240,190 Z" fill="#332B45"/>
+              <rect x="126" y="120" width="48" height="70" rx="4" fill="#1B1626"/>
+              <rect x="132" y="70" width="36" height="44" rx="3" fill="#F0C778" opacity=".8"/>
+              <path d="M60,60 C100,50 140,58 175,48" stroke="#7E8FA0" stroke-width="3" fill="none" stroke-dasharray="2 7" stroke-linecap="round"/>
+              <g transform="translate(225,55)"><ellipse rx="14" ry="9" fill="url(#birdBody)"/><circle cx="10" cy="-2" r="6" fill="url(#birdBody)"/><path class="wing-b" d="M-8,0 C-2,-10 8,-11 11,-5 C5,-3 -1,-1 -6,3 Z" fill="url(#birdWing)"/></g>
+            </svg>
+          </div>
+          <p class="panel-no">two</p>
+          <h3>The walk not taken.</h3>
+          <p>You waited with your shawl by the door. I said tomorrow. Tomorrow came empty.</p>
+        </article>
+        <article class="panel" data-panel="3">
+          <div class="panel-art" aria-hidden="true">
+            <svg viewBox="0 0 300 220">
+              <ellipse cx="150" cy="190" rx="90" ry="12" fill="#000" opacity=".3" filter="url(#softBlur)"/>
+              <g transform="rotate(-8 150 120)">
+                <rect x="95" y="70" width="110" height="90" rx="6" fill="url(#noteGrad)"/>
+                <rect x="95" y="70" width="110" height="90" rx="6" fill="none" stroke="#8A6E55" stroke-width="2"/>
+                <path d="M95,76 L150,112 L205,76" fill="none" stroke="#8A6E55" stroke-width="2"/>
+                <text x="150" y="140" text-anchor="middle" font-size="16" fill="#5E4A4E" font-style="italic" font-family="Fraunces,serif">sorry —</text>
+              </g>
+              <g fill="url(#petalMoon)" opacity=".9">
+                <ellipse cx="70" cy="60" rx="12" ry="7" transform="rotate(-30 70 60)"/>
+                <ellipse cx="240" cy="55" rx="10" ry="6" transform="rotate(24 240 55)"/>
+              </g>
+            </svg>
+          </div>
+          <p class="panel-no">three</p>
+          <h3>The drafts I deleted.</h3>
+          <p>I wrote sorry four times. Every draft was defending me, so I sent none of them.</p>
+        </article>
+        <article class="panel hold-panel" data-panel="4">
+          <p class="panel-no">four · needs your hand</p>
+          <h3>This stretch costs a little patience.</h3>
+          <p>Press and <em>keep holding</em> the circle. The vine only grows while you stay. That is the point.</p>
+          <button id="hold-button" aria-label="Press and hold to grow the vine">
+            <svg viewBox="0 0 160 160">
+              <circle cx="80" cy="80" r="62" fill="none" stroke="#3A4454" stroke-width="8"/>
+              <circle id="hold-ring" cx="80" cy="80" r="62" fill="none" stroke="url(#petalGold)" stroke-width="8" stroke-linecap="round" transform="rotate(-90 80 80)"/>
+              <circle cx="80" cy="80" r="44" fill="#2A2438"/>
+              <path id="hold-sprout" d="M80,104 C80,90 80,80 80,66 M80,84 C70,82 64,74 62,66 M80,78 C90,76 96,68 98,60" stroke="#5C8A6B" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span id="hold-label">hold me</span>
+          </button>
+          <p class="hold-feedback" id="hold-feedback">hold — don't rush it.</p>
+        </article>
+      </div>
+      <div class="strip-progress" aria-hidden="true"><span id="strip-bar"></span></div>
+    </div>
+  </section>
+
+  <!-- ══════════ SCENE 4 · CLIMAX ══════════ -->
+  <section class="scene climax" id="scene-4" data-scene-name="Sorry">
+    <div class="bloom-sky" aria-hidden="true"></div>
+    <div class="bloom-field" aria-hidden="true">
+      <svg id="bloom-svg" viewBox="0 0 900 480">
+        <ellipse cx="450" cy="440" rx="330" ry="26" fill="#000" opacity=".35" filter="url(#softBlur)"/>
+        <!-- stems -->
+        <g stroke-linecap="round" fill="none">
+          <path d="M250,430 C250,340 240,280 250,210" stroke="#2C3540" stroke-width="12"/>
+          <path d="M250,430 C250,340 240,280 250,210" stroke="url(#barkGrad)" stroke-width="6"/>
+          <path d="M450,435 C450,330 445,250 450,170" stroke="#2C3540" stroke-width="14"/>
+          <path d="M450,435 C450,330 445,250 450,170" stroke="url(#barkGrad)" stroke-width="7"/>
+          <path d="M650,430 C650,340 660,280 650,210" stroke="#2C3540" stroke-width="12"/>
+          <path d="M650,430 C650,340 660,280 650,210" stroke="url(#barkGrad)" stroke-width="6"/>
+        </g>
+        <g fill="url(#leafAlive)" opacity="0" class="bloom-leaves">
+          <ellipse cx="215" cy="330" rx="30" ry="13" transform="rotate(-30 215 330)"/>
+          <ellipse cx="288" cy="310" rx="30" ry="13" transform="rotate(26 288 310)"/>
+          <ellipse cx="412" cy="300" rx="34" ry="14" transform="rotate(-24 412 300)"/>
+          <ellipse cx="490" cy="285" rx="34" ry="14" transform="rotate(22 490 285)"/>
+          <ellipse cx="615" cy="325" rx="30" ry="13" transform="rotate(-26 615 325)"/>
+          <ellipse cx="688" cy="308" rx="30" ry="13" transform="rotate(24 688 308)"/>
+        </g>
+        <!-- three buds: closed state + open state crossfade/morph -->
+        <g class="bud" data-bud="1" transform="translate(250,180)">
+          <g class="bud-closed"><ellipse rx="26" ry="34" fill="url(#budClosed)"/><path d="M0,-34 C-14,-20 -16,-4 0,8 C16,-4 14,-20 0,-34" fill="#5A3A48" opacity=".8"/></g>
+          <g class="bud-open" opacity="0">
+            <g fill="url(#petalRose)">
+              <ellipse rx="16" ry="34" transform="rotate(-38)"/><ellipse rx="16" ry="34" transform="rotate(-19)"/><ellipse rx="16" ry="34"/><ellipse rx="16" ry="34" transform="rotate(19)"/><ellipse rx="16" ry="34" transform="rotate(38)"/>
+            </g>
+            <circle r="11" fill="url(#petalGold)"/>
+          </g>
+        </g>
+        <g class="bud" data-bud="2" transform="translate(450,135)">
+          <g class="bud-closed"><ellipse rx="34" ry="44" fill="url(#budClosed)"/><path d="M0,-44 C-18,-26 -20,-4 0,10 C20,-4 18,-26 0,-44" fill="#5A3A48" opacity=".8"/></g>
+          <g class="bud-open" opacity="0">
+            <g fill="url(#petalMoon)">
+              <ellipse rx="20" ry="44" transform="rotate(-48)"/><ellipse rx="20" ry="44" transform="rotate(-32)"/><ellipse rx="20" ry="44" transform="rotate(-16)"/><ellipse rx="20" ry="44"/><ellipse rx="20" ry="44" transform="rotate(16)"/><ellipse rx="20" ry="44" transform="rotate(32)"/><ellipse rx="20" ry="44" transform="rotate(48)"/>
+            </g>
+            <circle r="14" fill="url(#petalGold)"/>
+          </g>
+        </g>
+        <g class="bud" data-bud="3" transform="translate(650,180)">
+          <g class="bud-closed"><ellipse rx="26" ry="34" fill="url(#budClosed)"/><path d="M0,-34 C-14,-20 -16,-4 0,8 C16,-4 14,-20 0,-34" fill="#5A3A48" opacity=".8"/></g>
+          <g class="bud-open" opacity="0">
+            <g fill="url(#petalGold)">
+              <ellipse rx="16" ry="34" transform="rotate(-38)"/><ellipse rx="16" ry="34" transform="rotate(-19)"/><ellipse rx="16" ry="34"/><ellipse rx="16" ry="34" transform="rotate(19)"/><ellipse rx="16" ry="34" transform="rotate(38)"/>
+            </g>
+            <circle r="11" fill="url(#petalRose)"/>
+          </g>
+        </g>
+        <!-- returning bird -->
+        <g id="bird-return" opacity="0" transform="translate(750,60)">
+          <ellipse rx="18" ry="12" fill="url(#birdBody)"/>
+          <circle cx="13" cy="-4" r="8" fill="url(#birdBody)"/>
+          <circle cx="16" cy="-5" r="1.7" fill="#101623"/>
+          <path d="M21,-4 L28,-2 L21,0 Z" fill="#E8A7A0"/>
+          <path class="wing-r" d="M-11,-2 C-1,-19 15,-21 21,-10 C11,-8 -1,-4 -9,4 Z" fill="url(#birdWing)"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="copy climax-copy">
+      <p class="kicker">no more circling</p>
+      <h2 class="giant split">Rekha, I was wrong. I&nbsp;am sorry.</h2>
+      <p class="body">Not “sorry you felt bad.” Sorry I made you feel unheard by the person who should listen first. You trusted me with something tender and I handled it carelessly.</p>
+      <p class="body dim">I will spend the repair, not just say it.</p>
+
+      <div class="bloom-cta">
+        <button id="bloom-button" aria-label="Touch and hold to let the garden bloom">
+          <span class="bloom-orb" aria-hidden="true"></span>
+          <span id="bloom-label">touch and hold — you open it</span>
+        </button>
+        <p class="bloom-feedback" id="bloom-feedback">the buds are still closed. they open only if you ask.</p>
+        <div class="bloom-meter" aria-hidden="true"><span id="bloom-bar"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SCENE 5 · RESOLUTION ══════════ -->
+  <section class="scene resolution" id="scene-5" data-scene-name="Arrival">
+    <div class="dawn" aria-hidden="true"></div>
+    <div class="firefly-field" aria-hidden="true">
+      <svg viewBox="0 0 900 300" class="settle-garden">
+        <ellipse cx="450" cy="270" rx="360" ry="22" fill="#000" opacity=".3" filter="url(#softBlur)"/>
+        <g stroke-linecap="round">
+          <path d="M150,268 C150,210 145,170 155,120" stroke="#2C3540" stroke-width="10" fill="none"/>
+          <path d="M150,268 C150,210 145,170 155,120" stroke="url(#barkGrad)" stroke-width="5" fill="none"/>
+          <path d="M750,268 C750,210 755,170 745,120" stroke="#2C3540" stroke-width="10" fill="none"/>
+          <path d="M750,268 C750,210 755,170 745,120" stroke="url(#barkGrad)" stroke-width="5" fill="none"/>
+        </g>
+        <g class="settle-blooms">
+          <g transform="translate(155,95)" fill="url(#petalRose)">
+            <ellipse rx="13" ry="27" transform="rotate(-36)"/><ellipse rx="13" ry="27" transform="rotate(-18)"/><ellipse rx="13" ry="27"/><ellipse rx="13" ry="27" transform="rotate(18)"/><ellipse rx="13" ry="27" transform="rotate(36)"/>
+            <circle r="9" fill="url(#petalGold)"/>
+          </g>
+          <g transform="translate(745,95)" fill="url(#petalMoon)">
+            <ellipse rx="13" ry="27" transform="rotate(-36)"/><ellipse rx="13" ry="27" transform="rotate(-18)"/><ellipse rx="13" ry="27"/><ellipse rx="13" ry="27" transform="rotate(18)"/><ellipse rx="13" ry="27" transform="rotate(36)"/>
+            <circle r="9" fill="url(#petalGold)"/>
+          </g>
+        </g>
+        <g fill="url(#leafAlive)">
+          <ellipse cx="120" cy="200" rx="26" ry="11" transform="rotate(-24 120 200)"/>
+          <ellipse cx="188" cy="190" rx="26" ry="11" transform="rotate(20 188 190)"/>
+          <ellipse cx="712" cy="195" rx="26" ry="11" transform="rotate(-20 712 195)"/>
+          <ellipse cx="782" cy="205" rx="26" ry="11" transform="rotate(24 782 205)"/>
+        </g>
+        <g transform="translate(450,190)">
+          <rect x="-70" y="-46" width="140" height="96" rx="10" fill="#3A2E3E"/>
+          <rect x="-70" y="-46" width="140" height="96" rx="10" fill="none" stroke="#6B5560" stroke-width="2"/>
+          <rect id="gift-lid" x="-76" y="-62" width="152" height="24" rx="8" fill="#5A3A48"/>
+          <rect x="-12" y="-62" width="24" height="112" fill="url(#petalGold)" opacity=".9"/>
+          <g id="gift-bow" transform="translate(0,-62)">
+            <ellipse cx="-18" cy="-8" rx="18" ry="10" fill="url(#petalRose)" transform="rotate(-24 -18 -8)"/>
+            <ellipse cx="18" cy="-8" rx="18" ry="10" fill="url(#petalRose)" transform="rotate(24 18 -8)"/>
+            <circle r="7" fill="url(#petalGold)"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="copy resolution-copy">
+      <p class="kicker">arrival</p>
+      <h2 class="her-name split">Rekha.</h2>
+      <p class="body">The light is on. I am here, listening first. When you are ready — I will make the tea properly this time, and sit the whole while.</p>
+
+      <button id="note-toggle" aria-expanded="false">
+        <span class="note-cover"><span>tap to unfold the note</span></span>
+        <span class="note-inside">
+          <em>Tomorrow, 6pm, our balcony.</em>
+          <span>I will bring two hot cups and no phone. You bring nothing — just come as you are.</span>
+          <b>— yours</b>
+        </span>
+      </button>
+
+      <div class="final-row">
+        <button id="replay">walk it again</button>
+        <p class="sign">made by hand, no photographs — only this garden, for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <p>For Rekha · a private page · the birds kept your seat warm.</p>
+  </footer>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="app.js"></script>
+<script src="../nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>For Rekha — a small world</title>
+<meta name="description" content="A small illustrated world, made for Rekha. Scroll gently.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='36' r='22' fill='%23f2cfae'/%3E%3Ccircle cx='40' cy='30' r='4' fill='%2326314f'/%3E%3Cpath d='M50 34l10 4-10 5z' fill='%23f0a35e'/%3E%3Ccircle cx='32' cy='14' r='7' fill='%23ffcf87'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../nav.css">
+</head>
+<body>
+<a class="skip" href="#scene-1">Skip to the story</a>
+<div id="progress" aria-hidden="true"><span></span></div>
+<canvas id="sky-canvas" aria-hidden="true"></canvas>
+<div id="pointer-glow" aria-hidden="true"></div>
+
+<!-- Global cursor-following companion: Piku the bird. Pointer-events none except when waiting is handled by scene bird. -->
+<div id="piku-follower" aria-hidden="true">
+  <svg viewBox="0 0 120 110" width="76" height="70" role="img" aria-label="Piku the little bird">
+    <defs>
+      <radialGradient id="pf-body" cx="38%" cy="30%" r="80%">
+        <stop offset="0%" stop-color="#fdf3e0"/>
+        <stop offset="55%" stop-color="#f2cfae"/>
+        <stop offset="100%" stop-color="#dfa08e"/>
+      </radialGradient>
+      <linearGradient id="pf-wing" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#8fb3c9"/>
+        <stop offset="100%" stop-color="#5d7f9c"/>
+      </linearGradient>
+    </defs>
+    <ellipse class="pf-shadow" cx="60" cy="100" rx="26" ry="6" fill="#0e1430" opacity="0.25"/>
+    <g class="pf-bob">
+      <path d="M28 62 C24 40 44 22 66 24 C88 26 98 44 90 64 C82 84 44 86 28 62 Z" fill="url(#pf-body)" stroke="#8a5f52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="pf-wing" d="M52 58 C48 44 60 34 74 36 C80 37 78 48 70 54 C63 59 55 61 52 58 Z" fill="url(#pf-wing)" stroke="#4c6076" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="74" cy="44" r="9" fill="#fffdf6" opacity="0.9"/>
+      <g class="pf-eye">
+        <circle cx="76" cy="45" r="4.6" fill="#26314f"/>
+        <circle class="pf-glint" cx="77.6" cy="43.4" r="1.5" fill="#fff"/>
+      </g>
+      <path d="M88 50 L98 54 L88 59 C86 56 86 53 88 50 Z" fill="#f0a35e" stroke="#b06a2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M34 66 C28 70 26 76 30 80 M44 70 C40 75 40 80 44 83" stroke="#b06a2e" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M80 30 C82 24 88 22 92 25" stroke="#8a5f52" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </g>
+  </svg>
+</div>
+
+<header id="topbar">
+  <p class="brand">a small world · for Rekha</p>
+  <div class="top-actions">
+    <button id="sound-toggle" aria-pressed="false" aria-label="Toggle gentle ambient sound">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path class="wave" d="M16 9c1.2 1.5 1.2 4.5 0 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line class="mute-line" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span>sound off</span>
+    </button>
+  </div>
+</header>
+
+<main id="story">
+
+  <!-- ═══════════ SCENE 1 · HOOK ═══════════ -->
+  <section class="scene scene-hook" id="scene-1" data-mood="night" aria-label="Scene 1: waiting">
+    <div class="scene-inner">
+      <p class="kicker reveal">scene one · dusk</p>
+      <h1 class="headline split-lines">Rekha, this little world was waiting for you.</h1>
+      <p class="body reveal">Everything here has been holding still. Piku hasn't left that stone since yesterday. Go on — say hello.</p>
+      <button class="hint-pill reveal" id="begin-hint" type="button">
+        <span class="dot"></span> tap Piku to begin <span class="arrow">↓</span>
+      </button>
+
+      <div class="stage stage-hook">
+        <div class="svg-wrap">
+        <svg class="world world-hook" viewBox="0 0 900 520" role="img" aria-label="A quiet dusk meadow with a waiting bird on a stone">
+          <defs>
+            <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#141b33"/><stop offset="60%" stop-color="#2c3a5e"/><stop offset="100%" stop-color="#4a5580"/>
+            </linearGradient>
+            <radialGradient id="moonG" cx="50%" cy="42%" r="60%">
+              <stop offset="0%" stop-color="#fff6df"/><stop offset="60%" stop-color="#f4dfae"/><stop offset="100%" stop-color="#f4dfae" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="hill1a" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3b4a6e"/><stop offset="100%" stop-color="#242e4e"/>
+            </linearGradient>
+            <linearGradient id="hill1b" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4d5f86"/><stop offset="100%" stop-color="#2e3a58"/>
+            </linearGradient>
+            <linearGradient id="stoneG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#9aa3bd"/><stop offset="100%" stop-color="#5d6684"/>
+            </linearGradient>
+            <radialGradient id="pikuBody1" cx="38%" cy="30%" r="82%">
+              <stop offset="0%" stop-color="#fff6e4"/><stop offset="55%" stop-color="#f2cfae"/><stop offset="100%" stop-color="#d8947f"/>
+            </radialGradient>
+            <linearGradient id="pikuWing1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#9dc0d6"/><stop offset="100%" stop-color="#5d7f9c"/>
+            </linearGradient>
+            <linearGradient id="lampG1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffdf9e"/><stop offset="100%" stop-color="#e8a558"/>
+            </linearGradient>
+          </defs>
+          <rect width="900" height="520" fill="url(#sky1)" rx="28"/>
+          <circle cx="700" cy="120" r="90" fill="url(#moonG)"/>
+          <circle cx="700" cy="120" r="42" fill="#fdf3d3" stroke="#e8cf9a" stroke-width="3"/>
+          <path d="M688 108 c4 -3 9 -2 10 2 c1 4 -3 7 -7 6 c-4 -1 -6 -5 -3 -8 Z" fill="#eed9a8" opacity="0.8"/>
+          <g fill="#fff" opacity="0.8">
+            <circle class="twinkle" cx="120" cy="70" r="2.2"/><circle class="twinkle" cx="250" cy="45" r="1.6"/>
+            <circle class="twinkle" cx="380" cy="90" r="2"/><circle class="twinkle" cx="520" cy="55" r="1.5"/>
+            <circle class="twinkle" cx="840" cy="220" r="1.8"/><circle class="twinkle" cx="90" cy="180" r="1.6"/>
+          </g>
+          <path d="M0 380 C150 330 300 360 450 340 C600 320 750 350 900 330 L900 520 L0 520 Z" fill="url(#hill1b)"/>
+          <path d="M0 430 C180 395 340 425 520 408 C680 392 790 415 900 400 L900 520 L0 520 Z" fill="url(#hill1a)"/>
+          <path class="fire-path" d="M60 470 C220 440 340 455 470 430 C600 405 700 420 840 395" fill="none" stroke="#ffcf87" stroke-width="3" stroke-dasharray="1 14" stroke-linecap="round" opacity="0.7"/>
+          <!-- waiting stone -->
+          <g>
+            <ellipse cx="450" cy="478" rx="120" ry="16" fill="#0e1430" opacity="0.35"/>
+            <path d="M360 470 C365 435 410 420 452 424 C500 428 535 442 538 468 C540 482 500 490 450 490 C400 490 356 484 360 470 Z" fill="url(#stoneG)" stroke="#454e6e" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M390 448 C410 440 440 438 470 442" stroke="#c6cde2" stroke-width="3" stroke-linecap="round" opacity="0.6" fill="none"/>
+          </g>
+          <!-- unlit lantern beside stone -->
+          <g class="lantern-mini" data-lantern>
+            <rect x="588" y="380" width="8" height="70" rx="4" fill="#3a3350"/>
+            <rect x="566" y="348" width="52" height="44" rx="12" fill="#2b2740" stroke="#57507a" stroke-width="3"/>
+            <rect class="lamp-glass" x="574" y="356" width="36" height="28" rx="8" fill="#3d3a55"/>
+            <circle class="lamp-glow" cx="592" cy="370" r="26" fill="#ffcf87" opacity="0"/>
+            <path d="M578 348 L592 332 L606 348" fill="none" stroke="#57507a" stroke-width="3" stroke-linecap="round"/>
+          </g>
+          <!-- PIKU waiting, big, clickable -->
+          <g id="piku-waiting" tabindex="0" role="button" aria-label="Piku the bird is waiting. Tap to wake Piku.">
+            <ellipse cx="452" cy="422" rx="34" ry="8" fill="#0e1430" opacity="0.25"/>
+            <g class="piku-wait-bob">
+              <path d="M398 400 C392 358 428 326 470 330 C512 334 530 366 516 398 C502 430 414 432 398 400 Z" fill="url(#pikuBody1)" stroke="#8a5f52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path class="piku-wait-wing" d="M436 388 C430 364 450 348 470 350 C480 351 478 366 466 374 C456 381 442 388 436 388 Z" fill="url(#pikuWing1)" stroke="#4c6076" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <g class="piku-wait-eye">
+                <circle cx="484" cy="362" r="11" fill="#fffdf6"/>
+                <circle class="piku-pupil" cx="486" cy="364" r="5.5" fill="#26314f"/>
+                <circle cx="488" cy="362" r="1.8" fill="#fff"/>
+              </g>
+              <path d="M508 372 L524 378 L508 386 C505 381 505 377 508 372 Z" fill="#f0a35e" stroke="#b06a2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M452 332 C454 322 462 318 468 322 M470 330 C474 320 484 318 488 324" stroke="#8a5f52" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <circle cx="468" cy="320" r="3" fill="#8a5f52"/><circle cx="488" cy="322" r="3" fill="#8a5f52"/>
+            </g>
+            <g class="zzz" opacity="0.9">
+              <text x="540" y="330" font-size="26" fill="#cfd6ee" font-weight="700">z</text>
+              <text x="556" y="310" font-size="20" fill="#cfd6ee" opacity="0.7" font-weight="700">z</text>
+              <text x="568" y="294" font-size="15" fill="#cfd6ee" opacity="0.5" font-weight="700">z</text>
+            </g>
+          </g>
+          <!-- grass + rocks -->
+          <g stroke-linecap="round" fill="none" stroke="#5d6f8e" stroke-width="4">
+            <path d="M120 470 c4 -14 2 -24 -2 -32 M132 470 c6 -10 12 -18 20 -22 M108 470 c-4 -10 -8 -16 -14 -20"/>
+            <path d="M760 460 c4 -14 2 -24 -2 -32 M772 460 c6 -10 12 -18 20 -22"/>
+          </g>
+          <g>
+            <ellipse cx="180" cy="486" rx="30" ry="12" fill="#2a3554" stroke="#454e6e" stroke-width="3"/>
+            <ellipse cx="730" cy="490" rx="36" ry="13" fill="#2a3554" stroke="#454e6e" stroke-width="3"/>
+          </g>
+        </svg>
+          <p class="stage-caption" id="piku-status">Piku is dozing… waiting for you.</p>
+        </div>
+      </div>
+      <p class="scroll-cue" aria-hidden="true"><span></span>scroll gently</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ SCENE 2 · CONTEXT ═══════════ -->
+  <section class="scene scene-context" id="scene-2" data-mood="rain" aria-label="Scene 2: an honest grey evening">
+    <div class="scene-inner">
+      <p class="kicker reveal">scene two · the grey evening</p>
+      <h2 class="headline split-lines">I'll start honest: I made an ordinary day feel smaller than it should have.</h2>
+      <p class="body reveal">You went quiet on the walk home, and I kept talking instead of listening. The colour went out of it a little — like this grove when the rain won't stop.</p>
+
+      <div class="stage stage-context">
+        <div class="svg-wrap">
+        <svg class="world world-context" viewBox="0 0 900 560" role="img" aria-label="A muted grove with a bare tree, a shy cat, and a lantern">
+          <defs>
+            <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#232c4b"/><stop offset="100%" stop-color="#4c5878"/>
+            </linearGradient>
+            <linearGradient id="trunkG" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#5d4f5e"/><stop offset="100%" stop-color="#3d3444"/>
+            </linearGradient>
+            <radialGradient id="catG" cx="40%" cy="30%" r="85%">
+              <stop offset="0%" stop-color="#f4ede1"/><stop offset="55%" stop-color="#d9c7b4"/><stop offset="100%" stop-color="#a98f7d"/>
+            </radialGradient>
+            <linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6b7594"/><stop offset="100%" stop-color="#454e6e"/>
+            </linearGradient>
+          </defs>
+          <rect width="900" height="560" fill="url(#sky2)" rx="28"/>
+          <g stroke="#8b96b5" stroke-width="2" opacity="0.5" stroke-linecap="round" class="rain-lines">
+            <line x1="120" y1="40" x2="100" y2="110"/><line x1="260" y1="20" x2="240" y2="90"/>
+            <line x1="420" y1="50" x2="400" y2="120"/><line x1="600" y1="30" x2="580" y2="100"/>
+            <line x1="760" y1="60" x2="740" y2="130"/><line x1="850" y1="20" x2="830" y2="90"/>
+          </g>
+          <path d="M0 440 C200 410 350 435 520 418 C680 402 790 420 900 408 L900 560 L0 560 Z" fill="#2f3a56"/>
+          <!-- bare tree -->
+          <g>
+            <ellipse cx="230" cy="470" rx="110" ry="14" fill="#0e1430" opacity="0.3"/>
+            <path d="M212 465 C218 380 210 320 190 270 C210 285 228 295 238 300 C232 270 230 240 238 215 C250 245 258 275 262 300 C275 285 292 275 310 270 C295 290 282 305 274 320 C290 360 292 415 284 465 Z" fill="url(#trunkG)" stroke="#2c2434" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M232 330 C200 320 175 300 165 275 M250 300 C280 292 300 275 308 252" stroke="#2c2434" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <g class="rustle-leaf" data-leaf tabindex="0" role="button" aria-label="A last leaf clinging to the branch. Touch it.">
+              <path d="M300 252 C315 240 335 242 342 256 C335 270 315 272 300 252 Z" fill="#7d9070" stroke="#4c5c44" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M302 256 C315 254 328 255 340 258" stroke="#4c5c44" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+          </g>
+          <!-- low wall + Miri the cat -->
+          <g>
+            <rect x="430" y="420" width="380" height="60" rx="14" fill="url(#wallG)" stroke="#333c58" stroke-width="3"/>
+            <rect x="430" y="420" width="380" height="14" rx="7" fill="#7c86a8" opacity="0.7"/>
+            <g id="miri" tabindex="0" role="button" aria-label="Miri the cat. Pet her gently.">
+              <ellipse cx="600" cy="424" rx="52" ry="8" fill="#0e1430" opacity="0.25"/>
+              <g class="miri-body">
+                <path d="M540 420 C542 384 570 364 602 366 C636 368 658 388 656 418 C655 428 545 430 540 420 Z" fill="url(#catG)" stroke="#7a5f4c" stroke-width="3.5" stroke-linejoin="round"/>
+                <path d="M556 372 L548 344 L572 360 Z" fill="url(#catG)" stroke="#7a5f4c" stroke-width="3.5" stroke-linejoin="round"/>
+                <path d="M628 368 L640 342 L650 366 Z" fill="url(#catG)" stroke="#7a5f4c" stroke-width="3.5" stroke-linejoin="round"/>
+                <path d="M560 366 L556 352 L566 360 Z M632 362 L638 350 L642 362 Z" fill="#d9a7a0"/>
+                <g class="miri-eyes">
+                  <ellipse cx="584" cy="398" rx="7" ry="8" fill="#fffdf6"/>
+                  <ellipse cx="618" cy="398" rx="7" ry="8" fill="#fffdf6"/>
+                  <g class="miri-pupils">
+                    <ellipse cx="584" cy="400" rx="3.2" ry="5" fill="#2c3a4a"/>
+                    <ellipse cx="618" cy="400" rx="3.2" ry="5" fill="#2c3a4a"/>
+                  </g>
+                </g>
+                <path class="miri-mouth" d="M596 412 c3 3 7 3 10 0" stroke="#7a5f4c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path class="miri-tail" d="M654 414 C678 412 690 398 686 380" stroke="#7a5f4c" stroke-width="9" stroke-linecap="round" fill="none"/>
+                <g class="miri-blush" opacity="0">
+                  <ellipse cx="572" cy="408" rx="7" ry="4" fill="#d9a7a0"/><ellipse cx="630" cy="408" rx="7" ry="4" fill="#d9a7a0"/>
+                </g>
+              </g>
+              <g class="miri-heart" opacity="0">
+                <path d="M600 340 c-6 -8 -20 -4 -18 6 c1 7 10 12 18 18 c8 -6 17 -11 18 -18 c2 -10 -12 -14 -18 -6 Z" fill="#d9a7a0" stroke="#b07878" stroke-width="2"/>
+              </g>
+            </g>
+          </g>
+          <!-- touch lantern -->
+          <g class="lantern-touch" data-lantern tabindex="0" role="button" aria-label="A small lantern. Touch to light it.">
+            <rect x="112" y="400" width="9" height="80" rx="4.5" fill="#3a3350"/>
+            <rect x="88" y="366" width="58" height="48" rx="13" fill="#2b2740" stroke="#57507a" stroke-width="3"/>
+            <rect class="lamp-glass" x="97" y="375" width="40" height="30" rx="9" fill="#3d3a55"/>
+            <circle class="lamp-glow" cx="117" cy="390" r="34" fill="#ffcf87" opacity="0"/>
+            <text x="88" y="505" font-size="15" fill="#aeb7d4" font-weight="600">touch to light</text>
+          </g>
+        </svg>
+          <p class="stage-caption" id="miri-status">Miri is shy tonight. Pet her — gently.</p>
+        </div>
+        <div class="pet-meter" aria-hidden="true"><span id="pet-fill"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SCENE 3 · JOURNEY ═══════════ -->
+  <section class="scene scene-journey" id="scene-3" data-mood="petals" aria-label="Scene 3: crossing together">
+    <div class="scene-inner">
+      <p class="kicker reveal">scene three · the crossing</p>
+      <h2 class="headline split-lines">So let me walk you back — over the bridge, past the pond, toward warmer light.</h2>
+      <p class="body reveal">This part needs you, not just your eyes. Guide the paper boat across, and keep the little light with you.</p>
+
+      <div class="stage stage-journey">
+        <div class="svg-wrap">
+        <svg class="world world-journey" viewBox="0 0 900 600" role="img" aria-label="A wooden bridge over a river with a pond, fish, a frog and a paper boat">
+          <defs>
+            <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2c3a5e"/><stop offset="62%" stop-color="#6a6a92"/><stop offset="100%" stop-color="#c98d84"/>
+            </linearGradient>
+            <linearGradient id="riverG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5d7f9c"/><stop offset="100%" stop-color="#33465f"/>
+            </linearGradient>
+            <linearGradient id="woodG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c9a173"/><stop offset="100%" stop-color="#8a6242"/>
+            </linearGradient>
+            <linearGradient id="boatG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fdf6e8"/><stop offset="100%" stop-color="#e3cfae"/>
+            </linearGradient>
+            <radialGradient id="frogG" cx="40%" cy="30%" r="85%">
+              <stop offset="0%" stop-color="#b8d0a0"/><stop offset="60%" stop-color="#7fa06f"/><stop offset="100%" stop-color="#57795a"/>
+            </radialGradient>
+          </defs>
+          <rect width="900" height="600" fill="url(#sky3)" rx="28"/>
+          <circle cx="200" cy="130" r="60" fill="#ffcf87" opacity="0.25"/>
+          <circle cx="200" cy="130" r="30" fill="#ffe3ae"/>
+          <path d="M0 330 C180 300 320 330 450 312 C600 290 740 310 900 295 L900 600 L0 600 Z" fill="#3f5a52"/>
+          <path d="M120 420 C280 400 420 430 560 412 C680 398 780 410 900 400 L900 600 L120 600 Z" fill="url(#riverG)" stroke="#2b3d55" stroke-width="3"/>
+          <g class="shimmer" stroke="#cfe3ee" stroke-width="3" stroke-linecap="round" opacity="0.5">
+            <path d="M220 470 q20 -8 40 0"/><path d="M360 500 q20 -8 40 0"/><path d="M520 470 q20 -8 40 0"/><path d="M660 505 q20 -8 40 0"/>
+          </g>
+          <!-- bridge -->
+          <g>
+            <path id="bridge-arc" d="M90 400 C300 330 600 330 810 400" fill="none" stroke="#5d4030" stroke-width="14" stroke-linecap="round"/>
+            <g stroke="#5d4030" stroke-width="8" stroke-linecap="round">
+              <line x1="160" y1="386" x2="160" y2="428"/><line x1="260" y1="368" x2="260" y2="422"/>
+              <line x1="360" y1="358" x2="360" y2="418"/><line x1="460" y1="355" x2="460" y2="418"/>
+              <line x1="560" y1="358" x2="560" y2="420"/><line x1="660" y1="370" x2="660" y2="425"/><line x1="750" y1="386" x2="750" y2="428"/>
+            </g>
+            <path d="M110 372 C320 308 580 308 790 372" fill="none" stroke="#7a5a44" stroke-width="6" stroke-linecap="round"/>
+            <!-- two small walkers on bridge -->
+            <g class="walker walker-a" transform="translate(180 372)">
+              <ellipse cx="0" cy="0" rx="16" ry="5" fill="#0e1430" opacity="0.25"/>
+              <path d="M-14 -6 C-16 -26 -8 -40 0 -40 C8 -40 16 -26 14 -6 Z" fill="#7d8fb5" stroke="#4c5a7d" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="0" cy="-48" r="10" fill="#f2cfae" stroke="#8a5f52" stroke-width="3"/>
+              <path d="M0 -40 L14 -34" stroke="#e8a558" stroke-width="5" stroke-linecap="round"/>
+            </g>
+            <g class="walker walker-b" transform="translate(238 370)">
+              <ellipse cx="0" cy="0" rx="16" ry="5" fill="#0e1430" opacity="0.25"/>
+              <path d="M-14 -6 C-16 -26 -8 -40 0 -40 C8 -40 16 -26 14 -6 Z" fill="#d9a7a0" stroke="#96686a" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="0" cy="-48" r="10" fill="#f6d9bd" stroke="#8a5f52" stroke-width="3"/>
+              <circle cx="0" cy="-52" r="3.5" fill="#3a2e3f"/>
+            </g>
+          </g>
+          <!-- pond fish -->
+          <g id="pond" tabindex="0" role="button" aria-label="A pond with fish. Tap and they will scatter, then regroup.">
+            <ellipse cx="660" cy="520" rx="150" ry="46" fill="#22344c" opacity="0.55"/>
+            <g class="fish" data-fish><ellipse cx="0" cy="0" rx="20" ry="10" fill="#d9a7a0" stroke="#96686a" stroke-width="2.5"/><path d="M-20 0 L-32 -8 L-32 8 Z" fill="#96686a"/><circle cx="8" cy="-2" r="2.4" fill="#26314f"/></g>
+            <g class="fish" data-fish><ellipse cx="0" cy="0" rx="16" ry="8" fill="#9dc0d6" stroke="#4c6076" stroke-width="2.5"/><path d="M-16 0 L-26 -7 L-26 7 Z" fill="#4c6076"/><circle cx="6" cy="-1" r="2" fill="#26314f"/></g>
+            <g class="fish" data-fish><ellipse cx="0" cy="0" rx="18" ry="9" fill="#ffdf9e" stroke="#b0863e" stroke-width="2.5"/><path d="M-18 0 L-29 -7 L-29 7 Z" fill="#b0863e"/><circle cx="7" cy="-2" r="2.2" fill="#26314f"/></g>
+            <g class="fish" data-fish><ellipse cx="0" cy="0" rx="14" ry="7" fill="#b8d0a0" stroke="#57795a" stroke-width="2.5"/><path d="M-14 0 L-23 -6 L-23 6 Z" fill="#57795a"/><circle cx="5" cy="-1" r="1.8" fill="#26314f"/></g>
+          </g>
+          <!-- frog on lily -->
+          <g id="bupu" tabindex="0" role="button" aria-label="Bupu the frog. Tap to hear him.">
+            <ellipse cx="250" cy="540" rx="60" ry="16" fill="#4c6b4c"/>
+            <ellipse cx="250" cy="534" rx="60" ry="16" fill="#6d8f66" stroke="#3d5a3d" stroke-width="3"/>
+            <path d="M250 534 L250 520" stroke="#3d5a3d" stroke-width="3"/>
+            <g class="bupu-body">
+              <ellipse cx="250" cy="505" rx="30" ry="24" fill="url(#frogG)" stroke="#3d5a3d" stroke-width="3"/>
+              <circle cx="232" cy="484" r="11" fill="url(#frogG)" stroke="#3d5a3d" stroke-width="3"/>
+              <circle cx="268" cy="484" r="11" fill="url(#frogG)" stroke="#3d5a3d" stroke-width="3"/>
+              <g class="bupu-eyes"><circle cx="232" cy="484" r="5" fill="#26314f"/><circle cx="268" cy="484" r="5" fill="#26314f"/><circle cx="234" cy="482" r="1.5" fill="#fff"/><circle cx="270" cy="482" r="1.5" fill="#fff"/></g>
+              <path d="M238 512 q12 8 24 0" stroke="#2f4a2f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <ellipse class="bupu-throat" cx="250" cy="522" rx="10" ry="7" fill="#f4dfae" opacity="0.9"/>
+            </g>
+          </g>
+          <!-- paper boat (draggable via slider + pointer) -->
+          <g id="paper-boat" tabindex="0" role="slider" aria-label="Paper boat. Drag it across the river." aria-valuemin="0" aria-valuemax="100" aria-valuenow="5">
+            <g class="boat-bob">
+              <path d="M-38 0 L-14 -18 L14 -18 L38 0 L14 10 L-14 10 Z" fill="url(#boatG)" stroke="#8a6f4d" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M-14 -18 L0 0 L14 -18" fill="none" stroke="#8a6f4d" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="0" cy="-6" r="4" fill="#d9a7a0"/>
+            </g>
+          </g>
+        </svg>
+          <p class="stage-caption" id="boat-status">Nudge the little boat across the water.</p>
+        </div>
+
+        <div class="journey-controls">
+          <label class="boat-label" for="boat-range">Guide the boat <span id="boat-pct">5%</span></label>
+          <input id="boat-range" type="range" min="0" max="100" value="5" step="1" aria-describedby="boat-status">
+          <button id="firefly-hold" type="button" aria-describedby="boat-status">
+            <span class="hold-fill"></span>
+            <span class="hold-text">hold to keep the light close ♥</span>
+          </button>
+          <p class="micro" id="hold-status">Hold the button — the fireflies gather when you stay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SCENE 4 · CLIMAX ═══════════ -->
+  <section class="scene scene-climax" id="scene-4" data-mood="dawn" aria-label="Scene 4: the apology">
+    <div class="scene-inner">
+      <p class="kicker reveal">scene four · the part that matters</p>
+      <h2 class="climax-head split-lines">I'm sorry, Rekha.</h2>
+      <p class="climax-sub reveal">I was wrong that evening. You deserved softer —<br>more listening, less noise. I'll choose softer now, in the small things, on purpose.</p>
+
+      <div class="stage stage-climax">
+        <div class="svg-wrap">
+        <svg class="world world-climax" viewBox="0 0 900 520" role="img" aria-label="A clearing where companions gather around a large lantern">
+          <defs>
+            <linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a4a73"/><stop offset="55%" stop-color="#8a7f9e"/><stop offset="100%" stop-color="#e8b48c"/>
+            </linearGradient>
+            <radialGradient id="dawnGlow" cx="50%" cy="55%" r="65%">
+              <stop offset="0%" stop-color="#ffdf9e" stop-opacity="0.9"/><stop offset="100%" stop-color="#ffdf9e" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="cloakA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8fa3cc"/><stop offset="100%" stop-color="#54628c"/>
+            </linearGradient>
+            <linearGradient id="cloakB" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e8bcb4"/><stop offset="100%" stop-color="#b9817f"/>
+            </linearGradient>
+          </defs>
+          <rect width="900" height="520" fill="url(#sky4)" rx="28"/>
+          <circle id="dawn-sun" cx="450" cy="400" r="120" fill="url(#dawnGlow)" opacity="0.25"/>
+          <path d="M0 420 C200 395 380 415 560 400 C700 390 800 405 900 395 L900 520 L0 520 Z" fill="#4a5a52"/>
+          <path d="M0 460 C220 440 420 460 620 446 C740 438 820 448 900 442 L900 520 L0 520 Z" fill="#3c4a44"/>
+          <!-- gathered companions silhouettes -->
+          <g id="gathered" opacity="0.55">
+            <g transform="translate(200 440)"><ellipse cx="0" cy="0" rx="22" ry="7" fill="#0e1430" opacity="0.3"/><circle cx="0" cy="-28" r="18" fill="#f2cfae" stroke="#8a5f52" stroke-width="3"/><path d="M-20 -12 C-22 -30 -10 -40 0 -40 C10 -40 22 -30 20 -12 Z" fill="#7d8fb5"/></g>
+            <g transform="translate(690 444)"><ellipse cx="0" cy="0" rx="26" ry="7" fill="#0e1430" opacity="0.3"/><path d="M-26 -6 C-28 -30 -12 -44 4 -42 C20 -40 30 -26 28 -6 Z" fill="#d9c7b4" stroke="#7a5f4c" stroke-width="3"/><circle cx="-8" cy="-24" r="3" fill="#2c3a4a"/><circle cx="10" cy="-24" r="3" fill="#2c3a4a"/></g>
+            <g transform="translate(300 462)"><ellipse cx="0" cy="0" rx="20" ry="12" fill="#57795a" stroke="#3d5a3d" stroke-width="3"/></g>
+          </g>
+          <!-- the two of you -->
+          <g id="pair">
+            <g transform="translate(400 400)">
+              <ellipse cx="0" cy="52" rx="34" ry="9" fill="#0e1430" opacity="0.3"/>
+              <g class="breathe"><path d="M-26 50 C-30 10 -16 -14 0 -14 C16 -14 30 10 26 50 Z" fill="url(#cloakA)" stroke="#3f4c74" stroke-width="3.5" stroke-linejoin="round"/><circle cx="0" cy="-28" r="15" fill="#f2cfae" stroke="#8a5f52" stroke-width="3.5"/><path d="M0 -14 L26 -6" stroke="#ffcf87" stroke-width="6" stroke-linecap="round"/></g>
+            </g>
+            <g transform="translate(500 400)">
+              <ellipse cx="0" cy="52" rx="34" ry="9" fill="#0e1430" opacity="0.3"/>
+              <g class="breathe b2"><path d="M-26 50 C-30 10 -16 -14 0 -14 C16 -14 30 10 26 50 Z" fill="url(#cloakB)" stroke="#96686a" stroke-width="3.5" stroke-linejoin="round"/><circle cx="0" cy="-28" r="15" fill="#f6d9bd" stroke="#8a5f52" stroke-width="3.5"/><circle cx="0" cy="-33" r="4" fill="#3a2e3f"/><path d="M-4 -14 C-14 -8 -20 -2 -22 6" stroke="#96686a" stroke-width="5" stroke-linecap="round" fill="none"/></g>
+            </g>
+          </g>
+          <!-- big lantern heart -->
+          <g id="dawn-lantern" tabindex="0" role="button" aria-label="A large paper lantern. Press and hold to let the morning in.">
+                        <line x1="450" y1="60" x2="450" y2="130" stroke="#3a3350" stroke-width="6" stroke-linecap="round"/>
+            <g class="lantern-sway">
+              <rect x="398" y="130" width="104" height="120" rx="34" fill="#2b2740" stroke="#57507a" stroke-width="4"/>
+              <rect class="lamp-glass big-glass" x="414" y="148" width="72" height="84" rx="22" fill="#3d3a55"/>
+              <circle class="lamp-glow big-glow" cx="450" cy="190" r="70" fill="#ffcf87" opacity="0.12"/>
+              <path d="M450 168 c-10 -12 -32 -6 -29 9 c2 10 15 17 29 27 c14 -10 27 -17 29 -27 c3 -15 -19 -21 -29 -9 Z" fill="#d9a7a0" stroke="#96686a" stroke-width="3"/>
+              <rect x="432" y="250" width="36" height="12" rx="6" fill="#57507a"/>
+            </g>
+          </g>
+        </svg>
+        </div>
+
+        <div class="dawn-controls">
+          <button id="dawn-hold" type="button" aria-label="Press and hold to let the morning in">
+            <span class="dawn-fill"></span>
+            <span class="dawn-text">hold to let the morning in</span>
+          </button>
+          <p class="micro" id="dawn-status">Your hold does this — not autoplay. Stay with it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SCENE 5 · RESOLUTION ═══════════ -->
+  <section class="scene scene-resolution" id="scene-5" data-mood="morning" aria-label="Scene 5: morning">
+    <div class="scene-inner">
+      <p class="kicker reveal">scene five · morning</p>
+      <h2 class="headline serif split-lines">Rekha.</h2>
+      <p class="body reveal">Stay a little? The garden is warm when you're in it. Push the swing. Piku will circle once, just to show off.</p>
+
+      <div class="stage stage-resolution">
+        <div class="svg-wrap">
+        <svg class="world world-resolution" viewBox="0 0 900 560" role="img" aria-label="A warm morning garden with a swing, lanterns lit, and friends together">
+          <defs>
+            <linearGradient id="sky5" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#9db8d6"/><stop offset="55%" stop-color="#e8cfae"/><stop offset="100%" stop-color="#fdf3e3"/>
+            </linearGradient>
+            <linearGradient id="grassG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8aa88a"/><stop offset="100%" stop-color="#5d7d63"/>
+            </linearGradient>
+          </defs>
+          <rect width="900" height="560" fill="url(#sky5)" rx="28"/>
+          <circle cx="700" cy="130" r="70" fill="#fff6df" opacity="0.9"/>
+          <circle cx="700" cy="130" r="46" fill="#ffe3ae" stroke="#e8b85c" stroke-width="3"/>
+          <g fill="#fff" opacity="0.85">
+            <ellipse cx="250" cy="110" rx="60" ry="20"/><ellipse cx="300" cy="100" rx="46" ry="18"/><ellipse cx="480" cy="150" rx="52" ry="17" opacity="0.8"/>
+          </g>
+          <path d="M0 400 C220 375 420 400 620 385 C740 377 820 390 900 382 L900 560 L0 560 Z" fill="url(#grassG)"/>
+          <g fill="#e8b48c" opacity="0.9">
+            <circle cx="150" cy="430" r="7"/><circle cx="180" cy="440" r="6"/><circle cx="760" cy="435" r="7"/><circle cx="790" cy="445" r="6"/><circle cx="560" cy="445" r="6"/>
+          </g>
+          <!-- swing set -->
+          <g>
+            <line x1="300" y1="200" x2="270" y2="420" stroke="#6b4a34" stroke-width="10" stroke-linecap="round"/>
+            <line x1="500" y1="200" x2="530" y2="420" stroke="#6b4a34" stroke-width="10" stroke-linecap="round"/>
+            <line x1="280" y1="200" x2="520" y2="200" stroke="#6b4a34" stroke-width="10" stroke-linecap="round"/>
+            <g id="swing" tabindex="0" role="button" aria-label="A wooden swing. Tap to push it.">
+              <g class="swing-ropes">
+                <line x1="365" y1="200" x2="355" y2="330" stroke="#8a6f4d" stroke-width="5" stroke-linecap="round"/>
+                <line x1="435" y1="200" x2="445" y2="330" stroke="#8a6f4d" stroke-width="5" stroke-linecap="round"/>
+                <rect x="340" y="328" width="120" height="16" rx="8" fill="#a9764f" stroke="#6b4a34" stroke-width="3"/>
+                <g transform="translate(400 300)">
+                  <circle cx="0" cy="-30" r="14" fill="#f6d9bd" stroke="#8a5f52" stroke-width="3"/>
+                  <path d="M-18 -8 C-20 -26 -10 -36 0 -36 C10 -36 20 -26 18 -8 Z" fill="#d9a7a0" stroke="#96686a" stroke-width="3"/>
+                  <path d="M-14 -6 L-22 14 M14 -6 L22 14" stroke="#8a5f52" stroke-width="5" stroke-linecap="round"/>
+                </g>
+              </g>
+            </g>
+          </g>
+          <!-- pair resting + cat asleep + bird circling -->
+          <g transform="translate(620 440)">
+            <ellipse cx="0" cy="30" rx="70" ry="10" fill="#3d5a3d" opacity="0.25"/>
+            <path d="M-34 28 C-38 -6 -24 -26 -10 -26 C4 -26 16 -6 12 28 Z" fill="#7d8fb5" stroke="#4c5a7d" stroke-width="3"/>
+            <circle cx="-10" cy="-36" r="12" fill="#f2cfae" stroke="#8a5f52" stroke-width="3"/>
+            <path d="M22 28 C18 -6 30 -26 44 -26 C58 -26 68 -6 64 28 Z" fill="#d9a7a0" stroke="#96686a" stroke-width="3"/>
+            <circle cx="44" cy="-36" r="12" fill="#f6d9bd" stroke="#8a5f52" stroke-width="3"/>
+          </g>
+          <g transform="translate(600 492)">
+            <path d="M-30 0 C-30 -14 -14 -20 4 -18 C22 -16 32 -8 30 0 Z" fill="#d9c7b4" stroke="#7a5f4c" stroke-width="3"/>
+            <path d="M-22 -14 L-26 -26 L-14 -18 Z M18 -16 L24 -28 L28 -15 Z" fill="#d9c7b4" stroke="#7a5f4c" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M30 -2 C44 -2 48 -12 44 -20" stroke="#7a5f4c" stroke-width="6" stroke-linecap="round" fill="none"/>
+          </g>
+          <g class="lantern-row">
+            <g transform="translate(150 330)"><rect x="-4" y="0" width="8" height="70" fill="#6b4a34"/><rect x="-26" y="-34" width="52" height="44" rx="12" fill="#fff3d9" stroke="#b0863e" stroke-width="3"/><circle cx="0" cy="-12" r="30" fill="#ffcf87" opacity="0.35"/></g>
+            <g transform="translate(770 320)"><rect x="-4" y="0" width="8" height="80" fill="#6b4a34"/><rect x="-26" y="-34" width="52" height="44" rx="12" fill="#fff3d9" stroke="#b0863e" stroke-width="3"/><circle cx="0" cy="-12" r="30" fill="#ffcf87" opacity="0.35"/></g>
+          </g>
+          <g id="piku-circle"><circle cx="0" cy="0" r="12" fill="#f2cfae" stroke="#8a5f52" stroke-width="3"/><path d="M-12 2 L-22 -2 L-22 6 Z" fill="#5d7f9c"/><circle cx="4" cy="-2" r="2.5" fill="#26314f"/></g>
+        </svg>
+        </div>
+      </div>
+
+      <p class="closing reveal">Made by hand in code — no photos, only small drawn things that like you.</p>
+      <div class="closing-row">
+        <button id="replay" type="button">↺ walk it again</button>
+        <p class="sign">— for Rekha, always</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="colophon">
+  <p>A private story for Rekha · scroll + touch · sound is optional and off by default</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+<script src="app.js"></script>
+<script src="../nav.js"></script>
+</body>
+</html>
