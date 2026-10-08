@@ -35,4 +35,12 @@
   #rekha-nav .rn-dots a{width:40px;height:44px}
   #rekha-nav .rn-home{padding-left:14px;padding-right:14px}
 }
+@media(max-width:480px){
+  #rekha-nav .rn-prev{display:none}
+  #rekha-nav .rn-home .rn-t{display:none}
+  #rekha-nav .rn-home{min-width:44px;padding-left:12px;padding-right:12px}
+  #rekha-nav .rn-dots{gap:2px;padding:0 2px}
+  #rekha-nav .rn-dots a{width:33px;min-width:33px;padding:0}
+  #rekha-nav .rn-next{min-width:44px}
+}
 /* light pages (M is dark too, S ch7 dawn) — keep dark pill always for contrast */

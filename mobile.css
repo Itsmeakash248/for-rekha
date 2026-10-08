@@ -24,7 +24,12 @@ img, svg, canvas, video { max-width: 100%; }
 /* 3 · safe-area insets for fixed chrome */
 #sound-toggle { top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px)); }
 #rail { left: max(10px, env(safe-area-inset-left, 0px)); }
-#scroll-hint, .scroll-hint, .scroll-cue { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+/* A's side rail overlaps full-width copy on phones — the shared pill supersedes it */
+@media (max-width: 700px) {
+  #rail { display: none; }
+}
+/* fixed scroll hints sit bottom-center, same as the shared pill — lift above it */
+#scroll-hint, .scroll-hint { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
 #topbar { top: env(safe-area-inset-top, 0px); padding-top: calc(.9rem + env(safe-area-inset-top, 0px)); }
 .top-whisper { top: calc(14px + env(safe-area-inset-top, 0px)); }
 .progress-rail { right: calc(14px + env(safe-area-inset-right, 0px)); }

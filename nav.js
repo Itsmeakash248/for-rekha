@@ -62,7 +62,7 @@
   var routeNote = chain.length ? '<div class="rn-route">route continues → ' + chain.join(' → ') + '</div>' : '';
   nav.innerHTML =
     (prev ? '<a class="rn-prev" href="../' + prev.id + '/index.html" title="Previous: ' + prev.title + '">←</a>' : '') +
-    '<button class="rn-home" data-act="menu" aria-expanded="false" aria-haspopup="true" title="All five paths">⌂ paths</button>' +
+    '<button class="rn-home" data-act="menu" aria-expanded="false" aria-haspopup="true" title="All five paths">⌂<span class="rn-t"> paths</span></button>' +
     '<span class="rn-dots">' + dots + '</span>' +
     (cur ? '<span class="rn-label">' + PATHS[idx].title + '</span>' : '') +
     (next ? '<a class="rn-next" href="../' + next.id + '/index.html' + consumeChainForNext() + '" title="Next: ' + next.title + '">→</a>'

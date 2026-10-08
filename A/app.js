@@ -584,18 +584,20 @@
   })();
 
   /* ---------- gyro parallax (mobile camera feel) ---------- */
+  /* NOTE: locals named gx/gy — px/py are the canvas particle arrays above
+     (var hoisting would otherwise clobber them and kill the rAF loop). */
   try {
-    var px = 0, py = 0, tx = 0, ty = 0;
+    var gx = 0, gy = 0, tx = 0, ty = 0;
     window.addEventListener('deviceorientation', function (e) {
       if (e.gamma == null || e.beta == null) return;
       tx = Math.max(-1, Math.min(1, e.gamma / 30));
       ty = Math.max(-1, Math.min(1, (e.beta - 40) / 30));
     });
     gsap.ticker.add(function () {
-      px += (tx - px) * 0.04; py += (ty - py) * 0.04;
-      if (Math.abs(px) < 0.01 && Math.abs(py) < 0.01) return;
-      gsap.set('.moon-wrap', { x: px * 18, y: py * 12 });
-      gsap.set('.branch-stage', { x: px * -12 });
+      gx += (tx - gx) * 0.04; gy += (ty - gy) * 0.04;
+      if (Math.abs(gx) < 0.01 && Math.abs(gy) < 0.01) return;
+      gsap.set('.moon-wrap', { x: gx * 18, y: gy * 12 });
+      gsap.set('.branch-stage', { x: gx * -12 });
     });
   } catch (e) {}
 
