@@ -1,0 +1,60 @@
+/* mobile.css — shared mobile hardening for Rekha's worlds.
+   Loaded AFTER each page's own CSS. Desktop-first: rules below only
+   tighten small/coarse viewports, safe-areas, and dynamic viewport units. */
+
+/* 1 · never allow sideways scroll; keep type stable on rotate */
+html, body { overflow-x: hidden; overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+img, svg, canvas, video { max-width: 100%; }
+:where(a, button, [role="button"], input, summary, [tabindex]) {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 2 · dynamic viewport units (iOS URL-bar jump fix) */
+#sky-canvas { height: 100vh; height: 100svh; height: 100dvh; }
+.h-viewport { height: 100vh; height: 100svh; height: 100dvh; }
+.chapter { min-height: 100vh; min-height: 100svh; }
+@supports (min-height: 100dvh) {
+  .chapter { min-height: 100dvh; }
+  .h-viewport { height: 100dvh; }
+  #sky-canvas { height: 100dvh; }
+}
+
+/* 3 · safe-area insets for fixed chrome */
+#sound-toggle { top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px)); }
+#rail { left: max(10px, env(safe-area-inset-left, 0px)); }
+#scroll-hint, .scroll-hint, .scroll-cue { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+#topbar { top: env(safe-area-inset-top, 0px); padding-top: calc(.9rem + env(safe-area-inset-top, 0px)); }
+.top-whisper { top: calc(14px + env(safe-area-inset-top, 0px)); }
+.progress-rail { right: calc(14px + env(safe-area-inset-right, 0px)); }
+.progress-hint { right: calc(10px + env(safe-area-inset-right, 0px)); bottom: calc(3vh + env(safe-area-inset-bottom, 0px)); }
+.rail { right: calc(12px + env(safe-area-inset-right, 0px)); }
+.words { padding-left: 16px; padding-right: 16px; }
+.hint { bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+
+/* 4 · thumb-sized targets on touch screens only (desktop untouched) */
+@media (pointer: coarse) {
+  :where(button, input[type="range"]) { min-height: 44px; }
+  :where(#replay, #sound-toggle, #begin-hint, #boat-range) { min-height: 44px; }
+  #swing, #bupu, #pond, #miri, #piku-waiting { cursor: pointer; }
+  .grain { opacity: .32; }
+}
+
+/* 5 · very small screens: keep type + fixed rails inside the viewport */
+@media (max-width: 480px) {
+  .ghost { font-size: 24vw; }
+  .stage-caption { white-space: normal; text-align: center; line-height: 1.4; }
+  .memory { width: min(78vw, 420px); }
+  .rn-menu, #rekha-nav .rn-menu { max-width: calc(100vw - 24px); }
+  #piku-follower { display: none; }
+}
+@media (max-width: 380px) {
+  .hero h1, h1 { overflow-wrap: anywhere; }
+  .topbar, .top-whisper { font-size: 12px; }
+}
+
+/* 6 · save battery: calm the always-on loops for reduced-motion / save-data */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, #mq { animation: none !important; }
+}

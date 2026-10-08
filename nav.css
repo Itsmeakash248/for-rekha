@@ -1,31 +1,38 @@
 /* Shared navigator — for Rekha's five worlds. Floating glass pill, bottom-center. */
-#rekha-nav{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:9999;
-  display:flex;align-items:center;gap:6px;max-width:calc(100vw - 20px);
-  background:rgba(11,14,20,.72);border:1px solid rgba(255,255,255,.14);border-radius:999px;
-  padding:7px 8px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+#rekha-nav{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);z-index:9999;
+  display:flex;align-items:center;gap:6px;max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:none;
+  background:rgba(11,14,20,.78);border:1px solid rgba(255,255,255,.14);border-radius:999px;
+  padding:6px 8px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   box-shadow:0 14px 44px rgba(0,0,0,.5);font-family:"Manrope",system-ui,sans-serif}
+#rekha-nav::-webkit-scrollbar{display:none}
 #rekha-nav a,#rekha-nav button{appearance:none;border:none;background:transparent;color:#f4ede3;
   font:600 12.5px/1 "Manrope",system-ui,sans-serif;letter-spacing:.03em;text-decoration:none;
-  padding:10px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+  padding:10px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s;
+  min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 #rekha-nav a:hover,#rekha-nav button:hover{background:rgba(255,255,255,.1)}
 #rekha-nav .rn-home{background:linear-gradient(180deg,#ffe3ae,#e8a558);color:#3a2e3f!important;font-weight:700}
 #rekha-nav .rn-prev,#rekha-nav .rn-next{border:1px solid rgba(255,255,255,.14)}
 #rekha-nav .rn-dots{display:flex;gap:4px;padding:0 4px}
-#rekha-nav .rn-dots a{width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;
+#rekha-nav .rn-dots a{width:40px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;
   border:1px solid rgba(255,255,255,.12);font-family:Georgia,serif;font-style:italic}
 #rekha-nav .rn-dots a.on{background:rgba(232,156,174,.25);border-color:#e89cae;color:#ffc9d4}
 #rekha-nav .rn-label{font-family:Georgia,serif;font-style:italic;font-size:12.5px;color:rgba(244,237,227,.65);
   padding:0 8px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #rekha-nav .rn-menu{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(6px);
-  min-width:260px;background:rgba(11,14,20,.94);border:1px solid rgba(255,255,255,.14);border-radius:18px;
+  width:max-content;min-width:min(300px,calc(100vw - 32px));max-width:calc(100vw - 32px);
+  max-height:min(60svh,420px);overflow-y:auto;
+  background:rgba(11,14,20,.96);border:1px solid rgba(255,255,255,.14);border-radius:18px;
   padding:8px;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 20px 60px rgba(0,0,0,.6)}
 #rekha-nav.open .rn-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-#rekha-nav .rn-menu a{display:flex;gap:10px;align-items:baseline;padding:12px 14px;border-radius:12px}
+#rekha-nav .rn-menu a{display:flex;gap:10px;align-items:baseline;padding:12px 14px;border-radius:12px;min-height:44px}
 #rekha-nav .rn-menu a small{font-family:Georgia,serif;font-style:italic;color:#c98a9b}
 #rekha-nav .rn-route{font-size:11px;color:rgba(244,237,227,.55);padding:8px 14px 4px;letter-spacing:.08em;text-transform:uppercase}
 @media(max-width:640px){
+  #rekha-nav{gap:4px;padding:5px 6px}
   #rekha-nav .rn-label{display:none}
-  #rekha-nav a,#rekha-nav button{padding:10px 10px}
-  #rekha-nav .rn-dots a{width:28px;height:28px}
+  #rekha-nav a,#rekha-nav button{padding:10px;min-width:44px}
+  #rekha-nav .rn-dots a{width:40px;height:44px}
+  #rekha-nav .rn-home{padding-left:14px;padding-right:14px}
 }
 /* light pages (M is dark too, S ch7 dawn) — keep dark pill always for contrast */

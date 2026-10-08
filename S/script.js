@@ -82,6 +82,8 @@
 
   /* ---------- canvases ---------- */
   var isSmall = window.matchMedia("(max-width: 820px)").matches;
+  var saveDataS = false;
+  try { saveDataS = !!(navigator.connection && navigator.connection.saveData); } catch (e) {}
   var dustT = 0.35, calmT = 0; // scrub-driven uniforms
 
   function makeDust() {
@@ -89,7 +91,7 @@
     if (!cv) return null;
     var ctx = cv.getContext("2d");
     var W = 0, H = 0, ps = [], visible = false, t0 = performance.now();
-    var N = isSmall ? 110 : 300;
+    var N = saveDataS ? 50 : (isSmall ? 110 : 300);
     function resize() {
       var r = cv.parentElement.getBoundingClientRect();
       var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -144,7 +146,7 @@
     if (!cv) return null;
     var ctx = cv.getContext("2d");
     var S = 0, ps = [], visible = false, t0 = performance.now();
-    var N = isSmall ? 80 : 170;
+    var N = saveDataS ? 40 : (isSmall ? 80 : 170);
     function resize() {
       var r = cv.parentElement.getBoundingClientRect();
       var dpr = Math.min(window.devicePixelRatio || 1, 1.5);

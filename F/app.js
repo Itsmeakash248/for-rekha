@@ -91,7 +91,9 @@ function tickCat() {
 
 /* ───────── ambient canvas: fireflies / rain / petals / motes ───────── */
 var canvas = $('#sky-canvas'), ctx = null;
-var MAX = isMobile ? 90 : 220;
+var saveDataF = false;
+try { saveDataF = !!(navigator.connection && navigator.connection.saveData); } catch (e) {}
+var MAX = saveDataF ? 45 : (isMobile ? 90 : 220);
 var pxA, pyA, pvxA, pvyA, pszA, plfA, psdA, ptyA;
 var pCount = 0, mode = 'night', attract = 0.12, holdBoost = 0;
 var DPR = 1;

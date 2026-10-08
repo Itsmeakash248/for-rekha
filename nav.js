@@ -62,7 +62,7 @@
   var routeNote = chain.length ? '<div class="rn-route">route continues → ' + chain.join(' → ') + '</div>' : '';
   nav.innerHTML =
     (prev ? '<a class="rn-prev" href="../' + prev.id + '/index.html" title="Previous: ' + prev.title + '">←</a>' : '') +
-    '<button class="rn-home" data-act="menu" title="All five paths">⌂ paths</button>' +
+    '<button class="rn-home" data-act="menu" aria-expanded="false" aria-haspopup="true" title="All five paths">⌂ paths</button>' +
     '<span class="rn-dots">' + dots + '</span>' +
     (cur ? '<span class="rn-label">' + PATHS[idx].title + '</span>' : '') +
     (next ? '<a class="rn-next" href="../' + next.id + '/index.html' + consumeChainForNext() + '" title="Next: ' + next.title + '">→</a>'
@@ -76,8 +76,22 @@
 
   document.addEventListener('click', function (e) {
     var b = e.target.closest ? e.target.closest('[data-act="menu"]') : null;
-    if (b && nav.contains(b)) { e.preventDefault(); nav.classList.toggle('open'); return; }
-    if (!e.target.closest || !e.target.closest('#rekha-nav')) nav.classList.remove('open');
+    if (b && nav.contains(b)) {
+      e.preventDefault();
+      var open = nav.classList.toggle('open');
+      try { b.setAttribute('aria-expanded', open ? 'true' : 'false'); } catch (err) {}
+      return;
+    }
+    if (!e.target.closest || !e.target.closest('#rekha-nav')) {
+      nav.classList.remove('open');
+      try { var hb = nav.querySelector('[data-act="menu"]'); if (hb) hb.setAttribute('aria-expanded', 'false'); } catch (err2) {}
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      nav.classList.remove('open');
+      try { var hb2 = nav.querySelector('[data-act="menu"]'); if (hb2) hb2.setAttribute('aria-expanded', 'false'); } catch (err3) {}
+    }
   });
 
   window.addEventListener('keydown', function (e) {

@@ -75,7 +75,9 @@
 
   /* ---------- canvas particle world (typed arrays) ---------- */
   var canvas = $('#cosmos'), ctx2d = canvas ? canvas.getContext('2d') : null;
-  var DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var saveDataA = false;
+  try { saveDataA = !!(navigator.connection && navigator.connection.saveData); } catch (e) {}
+  var DPR = Math.min(window.devicePixelRatio || 1, (isMobile || saveDataA) ? 1.5 : 2);
   var W = 0, H = 0;
   function sizeCanvas() {
     if (!canvas) return;
@@ -85,8 +87,9 @@
     if (ctx2d) ctx2d.setTransform(DPR, 0, 0, DPR, 0, 0);
   }
   sizeCanvas(); window.addEventListener('resize', sizeCanvas);
+  try { window.addEventListener('orientationchange', function () { setTimeout(sizeCanvas, 120); }); } catch (e2) {}
 
-  var DENSITY = isMobile ? 90 : 210;
+  var DENSITY = saveDataA ? 50 : (isMobile ? 90 : 210);
   var px = new Float32Array(DENSITY), py = new Float32Array(DENSITY),
       vx = new Float32Array(DENSITY), vy = new Float32Array(DENSITY),
       sz = new Float32Array(DENSITY), al = new Float32Array(DENSITY),
