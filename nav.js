@@ -5,8 +5,8 @@
   if (window.__rekhaNav) return; window.__rekhaNav = true;
 
   var PATHS = [
-    { id: 'S', no: '01', title: 'The Quiet Letter', sub: 'words first' },
-    { id: 'R', no: '02', title: 'The Bloom Film', sub: 'frame by frame' },
+    { id: 'R', no: '01', title: 'The Bloom Film', sub: 'frame by frame' },
+    { id: 'S', no: '02', title: 'The Quiet Letter', sub: 'words first' },
     { id: 'F', no: '03', title: 'A Small World', sub: 'come play' },
     { id: 'A', no: '04', title: 'The Quiet Walk', sub: 'two minutes' },
     { id: 'M', no: '05', title: 'Heart of Light', sub: 'one breath' }

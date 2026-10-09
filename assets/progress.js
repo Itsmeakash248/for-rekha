@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   var KEY = 'rekha-progress-v1';
-  var ORDER = ['S', 'R', 'F', 'A', 'M'];
+  var ORDER = ['R', 'S', 'F', 'A', 'M'];
   var TITLES = { S: 'The Quiet Letter', R: 'The Bloom Film', F: 'A Small World', A: 'The Quiet Walk', M: 'Heart of Light' };
 
   function load() {
