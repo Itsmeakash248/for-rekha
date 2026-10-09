@@ -118,8 +118,25 @@
 </style>
 <link rel="stylesheet" href="../nav.css" />
 <link rel="stylesheet" href="../mobile.css" />
+<link rel="canonical" href="https://for-rekha.vercel.app/M/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="For Rekha">
+<meta property="og:title" content="For Rekha — Heart of Light">
+<meta property="og:description" content="Hundreds of lights gather into a heart. Sixty seconds. End here.">
+<meta property="og:url" content="https://for-rekha.vercel.app/M/">
+<meta property="og:image" content="https://for-rekha.vercel.app/assets/og/M.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="For Rekha — Heart of Light">
+<meta name="twitter:description" content="Hundreds of lights gather into a heart. Sixty seconds. End here.">
+<meta name="twitter:image" content="https://for-rekha.vercel.app/assets/og/M.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="../icons/icon-192.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 </head>
 <body>
+<a class="skip" href="#story" style="position:absolute;left:-9999px;top:0;background:#ffe3ae;color:#3a2e3f;padding:12px 18px;border-radius:0 0 12px 0;font-weight:700;z-index:200" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to the story</a>
 <canvas id="scene" aria-hidden="true"></canvas>
 <div class="heart-halo" id="halo"></div>
 <div class="vignette" id="vignette"></div>
@@ -281,6 +298,9 @@
   window.addEventListener('mousedown', function(e){ breathe(e.clientX, e.clientY); });
   window.addEventListener('mouseleave', function(){ mouse.x=-9999; mouse.y=-9999; mouse.active=false; });
 
+  function heartbeatPulse(){
+    try { if (window.RekhaSound && window.RekhaSound.isOn()) window.RekhaSound.heartbeat(); } catch (e) {}
+  }
   function breathe(x, y){
     pulses.push({ x:x, y:y, r:10, max:220, a:1 });
     if (pulses.length > 4) pulses.shift();
@@ -320,7 +340,9 @@
     setTimeout(function(){ halo.classList.add('on'); vignette.classList.add('on'); }, 1200);
     setTimeout(function(){ if(!shown1){ l1.classList.add('visible'); shown1=true; } }, 5600);
     setTimeout(function(){ if(!shown2){ l2.classList.add('visible'); shown2=true; } }, 7800);
-    setTimeout(function(){ if(!shown3){ l3.classList.add('visible'); shown3=true; } }, 10200);
+    setTimeout(function(){ if(!shown3){ l3.classList.add('visible'); shown3=true; heartbeatPulse(); } }, 10200);
+    // heartbeat every breath after the finale line lands (only audible if sound on)
+    setInterval(function(){ if (shown3 && !document.hidden) heartbeatPulse(); }, 6200);
     setTimeout(function(){ hint.classList.add('show'); }, 11000);
     setTimeout(function(){ if(!hintDismissed){ hint.classList.add('gone'); hint.classList.remove('show'); } }, 21000);
   }
@@ -467,6 +489,9 @@
   requestAnimationFrame(frame);
 })();
 </script>
+<script src="../assets/progress.js" defer></script>
+<script src="../assets/sound.js" defer></script>
 <script src="../nav.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){try{navigator.serviceWorker.register('../sw.js');}catch(e){}});}</script>
 </body>
 </html>

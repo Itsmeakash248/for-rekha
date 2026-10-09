@@ -16,8 +16,25 @@
 <link rel="stylesheet" href="styles.css" />
 <link rel="stylesheet" href="../nav.css" />
 <link rel="stylesheet" href="../mobile.css" />
+<link rel="canonical" href="https://for-rekha.vercel.app/S/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="For Rekha">
+<meta property="og:title" content="For Rekha — The Quiet Letter">
+<meta property="og:description" content="A slow typographic letter that warms from dusk to dawn. Start here.">
+<meta property="og:url" content="https://for-rekha.vercel.app/S/">
+<meta property="og:image" content="https://for-rekha.vercel.app/assets/og/S.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="For Rekha — The Quiet Letter">
+<meta name="twitter:description" content="A slow typographic letter that warms from dusk to dawn. Start here.">
+<meta name="twitter:image" content="https://for-rekha.vercel.app/assets/og/S.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="../icons/icon-192.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 </head>
 <body>
+<a class="skip" href="#story" style="position:absolute;left:-9999px;top:0;background:#ffe3ae;color:#3a2e3f;padding:12px 18px;border-radius:0 0 12px 0;font-weight:700;z-index:200" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to the story</a>
 <div class="sky" aria-hidden="true"></div>
 <div class="dawn" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -148,6 +165,9 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="script.js"></script>
+<script src="../assets/progress.js" defer></script>
+<script src="../assets/sound.js" defer></script>
 <script src="../nav.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){try{navigator.serviceWorker.register('../sw.js');}catch(e){}});}</script>
 </body>
 </html>

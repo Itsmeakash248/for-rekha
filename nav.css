@@ -13,6 +13,9 @@
 #rekha-nav a:hover,#rekha-nav button:hover{background:rgba(255,255,255,.1)}
 #rekha-nav .rn-home{background:linear-gradient(180deg,#ffe3ae,#e8a558);color:#3a2e3f!important;font-weight:700}
 #rekha-nav .rn-prev,#rekha-nav .rn-next{border:1px solid rgba(255,255,255,.14)}
+#rekha-nav .rn-sound{border:1px solid rgba(255,255,255,.14);opacity:.85}
+#rekha-nav .rn-sound.on{background:rgba(232,200,122,.22);border-color:rgba(232,200,122,.6);color:#ffe3ae;opacity:1}
+body.sound-on #rekha-nav .rn-sound{box-shadow:0 0 14px rgba(232,200,122,.35)}
 #rekha-nav .rn-dots{display:flex;gap:4px;padding:0 4px}
 #rekha-nav .rn-dots a{width:40px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;
   border:1px solid rgba(255,255,255,.12);font-family:Georgia,serif;font-style:italic}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://for-rekha.vercel.app/sitemap.xml

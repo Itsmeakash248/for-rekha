@@ -9,6 +9,19 @@
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
   /* ---------- loader ---------- */
+  // Returning visitor: garden remembers it bloomed (no personal data, just a flag)
+  try {
+    if (localStorage.getItem('rekha-bloom') === '1') {
+      bloomOn = true;
+      document.body.dataset.bloom = '1';
+      window.addEventListener('DOMContentLoaded', function () {
+        $$('.bud-open').forEach(function (g) { g.setAttribute('opacity', '1'); });
+        $$('.bud-closed').forEach(function (g) { g.setAttribute('opacity', '0'); });
+        var bl = $('.bloom-leaves'); if (bl) bl.setAttribute('opacity', '1');
+        var fb = $('#bloom-feedback'); if (fb) fb.textContent = 'still blooming from last time. hold again to make it sing.';
+      });
+    }
+  } catch (e) {}
   function hideLoader() { var l = $('#loader'); if (l) l.classList.add('done'); }
   window.addEventListener('load', function () { setTimeout(hideLoader, 500); });
   setTimeout(hideLoader, 3500);
@@ -70,6 +83,11 @@
       audio.master.gain.linearRampToValueAtTime(audio.on ? 0.5 : 0.0001, t + 1.2);
       if (audio.on) { chime(); audio.chimeTimer = setInterval(chime, 9000); }
       else if (audio.chimeTimer) { clearInterval(audio.chimeTimer); audio.chimeTimer = null; }
+      try {
+        localStorage.setItem('rekha-sound', audio.on ? 'on' : 'off');
+        var pill = document.querySelector('#rekha-nav .rn-sound');
+        if (pill) { pill.classList.toggle('on', audio.on); pill.setAttribute('aria-pressed', audio.on ? 'true' : 'false'); }
+      } catch (e2) {}
     } catch (e) {}
   });
 
@@ -504,6 +522,7 @@
 
   function playBloom() {
     if (bloomDone) return; bloomDone = true; bloomOn = true;
+    try { localStorage.setItem('rekha-bloom', '1'); } catch (e) {}
     document.body.dataset.bloom = '1';
     try { document.documentElement.style.setProperty('--warm', '1'); } catch (e) {}
     var fb = $('#bloom-feedback');

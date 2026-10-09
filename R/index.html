@@ -167,8 +167,25 @@ footer.endpad{position:relative;z-index:2;height:10vh}
 </style>
 <link rel="stylesheet" href="../nav.css">
 <link rel="stylesheet" href="../mobile.css">
+<link rel="canonical" href="https://for-rekha.vercel.app/R/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="For Rekha">
+<meta property="og:title" content="For Rekha — The Bloom Film">
+<meta property="og:description" content="Seven scroll-chapters. A vine grows with you, then opens.">
+<meta property="og:url" content="https://for-rekha.vercel.app/R/">
+<meta property="og:image" content="https://for-rekha.vercel.app/assets/og/R.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="For Rekha — The Bloom Film">
+<meta name="twitter:description" content="Seven scroll-chapters. A vine grows with you, then opens.">
+<meta name="twitter:image" content="https://for-rekha.vercel.app/assets/og/R.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="../icons/icon-192.png">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
 </head>
 <body>
+<a class="skip" href="#story" style="position:absolute;left:-9999px;top:0;background:#ffe3ae;color:#3a2e3f;padding:12px 18px;border-radius:0 0 12px 0;font-weight:700;z-index:200" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">Skip to the story</a>
 <div id="glow"></div>
 <canvas id="field" aria-hidden="true"></canvas>
 <div class="vignette"></div>
@@ -730,6 +747,9 @@ if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>{ try{S
 window.addEventListener('load', ()=>{ try{ScrollTrigger.refresh();}catch(e){} });
 })();
 </script>
+<script src="../assets/progress.js" defer></script>
+<script src="../assets/sound.js" defer></script>
 <script src="../nav.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){try{navigator.serviceWorker.register('../sw.js');}catch(e){}});}</script>
 </body>
 </html>

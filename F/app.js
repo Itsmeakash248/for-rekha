@@ -338,6 +338,23 @@ function initInteractions() {
     piku.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wakePiku(); } });
   }
   if (hint) hint.addEventListener('click', wakePiku);
+  // Touch: after wake, taps make Piku hop + chirp (follower is hidden <480px, so hop the waiting bird)
+  try {
+    var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if (coarse) {
+      var hops = 0;
+      document.addEventListener('touchstart', function (e) {
+        if (!document.body.classList.contains('awake')) return;
+        if (e.target.closest && e.target.closest('button,a,input')) return;
+        hops++;
+        try { if (navigator.vibrate) navigator.vibrate(6); } catch (err) {}
+        try { if (window.RekhaSound && window.RekhaSound.isOn()) window.RekhaSound.chime(); } catch (err2) {}
+        if (hasGSAP && !reducedMotion) {
+          try { gsap.fromTo('#piku-waiting .piku-wait-bob', { y: 0 }, { y: -10, duration: 0.2, yoyo: true, repeat: 1, ease: 'power2.out' }); } catch (err3) {}
+        }
+      }, { passive: true });
+    }
+  } catch (e) {}
 
   /* lanterns */
   $$('[data-lantern]').forEach(function (el) {
@@ -364,6 +381,8 @@ function initInteractions() {
   if (miri) {
     var pet = function () {
       pets++;
+      try { if (navigator.vibrate) navigator.vibrate(8); } catch (e) {}
+      try { if (window.RekhaSound && window.RekhaSound.isOn()) window.RekhaSound.purr(); } catch (e) {}
       if (fill) fill.style.width = clamp(pets * 18, 0, 100) + '%';
       if (hasGSAP && !reducedMotion) {
         try {
@@ -544,6 +563,11 @@ function initInteractions() {
     var label = st.querySelector('span');
     if (audio.on) { soundOff(); st.setAttribute('aria-pressed', 'false'); if (label) label.textContent = 'sound off'; }
     else { var ok = soundOn(); st.setAttribute('aria-pressed', ok ? 'true' : 'false'); if (label) label.textContent = ok ? 'sound on' : 'sound unavailable'; }
+    try {
+      localStorage.setItem('rekha-sound', audio.on ? 'on' : 'off');
+      var pill = document.querySelector('#rekha-nav .rn-sound');
+      if (pill) { pill.classList.toggle('on', audio.on); pill.setAttribute('aria-pressed', audio.on ? 'true' : 'false'); }
+    } catch (e) {}
   });
 }
 

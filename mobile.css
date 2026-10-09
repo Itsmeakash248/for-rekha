@@ -63,3 +63,16 @@ img, svg, canvas, video { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track, #mq { animation: none !important; }
 }
+
+/* 7 · ultimate-plan polish: keep fixed chrome clear of the shared nav pill */
+@media (max-width: 700px) {
+  .progress-hint { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+  .progress-rail { top: 10vh; bottom: 12vh; right: calc(10px + env(safe-area-inset-right, 0px)); }
+}
+.svg-wrap svg { width: 100%; height: auto; display: block; }
+.stage, .scene-inner { min-width: 0; }
+.memory-card, .promise, .route { min-width: 0; overflow-wrap: anywhere; }
+/* PWA standalone: reclaim the top offset since status bar is themed */
+@media (display-mode: standalone) {
+  .topbar { top: 8px; }
+}
